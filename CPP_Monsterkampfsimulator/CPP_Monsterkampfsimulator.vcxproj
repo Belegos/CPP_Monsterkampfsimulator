@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{98af031b-7235-436e-9e4f-3884c582d0aa}</ProjectGuid>
+    <ProjectGuid>{01c3952a-0e49-4f3c-96e6-839e03c11625}</ProjectGuid>
     <RootNamespace>CPPMonsterkampfsimulator</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>

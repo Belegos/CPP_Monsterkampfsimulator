@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33403.182
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CPP_Monsterkampfsimulator", "CPP_Monsterkampfsimulator.vcxproj", "{98AF031B-7235-436E-9E4F-3884C582D0AA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CPP_Monsterkampfsimulator", "CPP_Monsterkampfsimulator\CPP_Monsterkampfsimulator.vcxproj", "{01C3952A-0E49-4F3C-96E6-839E03C11625}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,19 +13,19 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{98AF031B-7235-436E-9E4F-3884C582D0AA}.Debug|x64.ActiveCfg = Debug|x64
-		{98AF031B-7235-436E-9E4F-3884C582D0AA}.Debug|x64.Build.0 = Debug|x64
-		{98AF031B-7235-436E-9E4F-3884C582D0AA}.Debug|x86.ActiveCfg = Debug|Win32
-		{98AF031B-7235-436E-9E4F-3884C582D0AA}.Debug|x86.Build.0 = Debug|Win32
-		{98AF031B-7235-436E-9E4F-3884C582D0AA}.Release|x64.ActiveCfg = Release|x64
-		{98AF031B-7235-436E-9E4F-3884C582D0AA}.Release|x64.Build.0 = Release|x64
-		{98AF031B-7235-436E-9E4F-3884C582D0AA}.Release|x86.ActiveCfg = Release|Win32
-		{98AF031B-7235-436E-9E4F-3884C582D0AA}.Release|x86.Build.0 = Release|Win32
+		{01C3952A-0E49-4F3C-96E6-839E03C11625}.Debug|x64.ActiveCfg = Debug|x64
+		{01C3952A-0E49-4F3C-96E6-839E03C11625}.Debug|x64.Build.0 = Debug|x64
+		{01C3952A-0E49-4F3C-96E6-839E03C11625}.Debug|x86.ActiveCfg = Debug|Win32
+		{01C3952A-0E49-4F3C-96E6-839E03C11625}.Debug|x86.Build.0 = Debug|Win32
+		{01C3952A-0E49-4F3C-96E6-839E03C11625}.Release|x64.ActiveCfg = Release|x64
+		{01C3952A-0E49-4F3C-96E6-839E03C11625}.Release|x64.Build.0 = Release|x64
+		{01C3952A-0E49-4F3C-96E6-839E03C11625}.Release|x86.ActiveCfg = Release|Win32
+		{01C3952A-0E49-4F3C-96E6-839E03C11625}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {02A15CFB-4D7A-47E0-ABD6-3BDAA5FD28AC}
+		SolutionGuid = {D92E72CC-8E23-4CE6-B892-998580E257F4}
 	EndGlobalSection
 EndGlobal
