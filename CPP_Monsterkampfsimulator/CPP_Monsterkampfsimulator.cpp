@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Monster.h"
+#include "CPP_Monsterkampfsimulator.h"
 using namespace std;
 int main(int argc, char* argv[])
 {
@@ -14,5 +15,9 @@ int main(int argc, char* argv[])
     cout << "type something and I will repeat: ";
     cin.getline(sz, 256); //cin.getline() reads a whole line
     cout << "You typed: " << sz << endl; //repeats the whole line
+    Monster obj1{};
+    printf("Monster Health: %d", obj1.monsterHealth);
+    obj1.monsterHealth = 50;
+    printf("Monster Health: %d", obj1.monsterHealth);
     return 0;
 }
