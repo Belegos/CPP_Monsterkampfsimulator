@@ -1,7 +1,7 @@
 #include "MainMenu.h"
 #include <iostream>
 #include <windows.h>
-#include <conio.h>
+#include <conio.h> // non-standart c++ headerfile, for reading user input in windows 
 using namespace std;
 /// <summary>
 /// The "StartMenu" function displays a menu with three options and
@@ -27,7 +27,7 @@ void MainMenu::StartMenu()
 		Color(Set[2]);
 		cout << "3. Exit";
 
-		key = _getch();		//get key pressed by user
+		key = _getch();		// reads a single character from the keyboard without echoing it to the console.
 
 		if (key == 80 && (counter >= 1 && counter <= 2))		//if key pressed is down arrow
 		{
@@ -42,29 +42,23 @@ void MainMenu::StartMenu()
 			if (counter == 1)
 			{
 				//start game
+				//ClearLine(9);
 				GoToXY(10, 9);
-				ClearLine();
-				GoToXY(10, 9);
+				ClearCurrentLine();
 				cout << "START GAME" << "\r"<<endl;
 				//break;
 			}
 			else if (counter == 2)
 			{
 				//help
-				GoToXY(10, 9);
-				ClearLine();
+				ClearLine(9);
 				GoToXY(10, 9);
 				cout << "HELP" << "\r"<<endl;
 				//break;
 			}
 			else if (counter == 3)
 			{
-				//exit
-				GoToXY(10, 9);
-				ClearLine();
-				GoToXY(10, 9);
-				cout << "EXIT" << "\r"<<endl;
-				//break;
+				exit(0);
 			}
 		}
 
@@ -117,4 +111,8 @@ void MainMenu::ClearLine(int y)
 		cout << " ";
 	}
 	GoToXY(0, y);
+}
+void MainMenu::ClearCurrentLine() 
+{
+	std::cout << "\x1b[2K";
 }

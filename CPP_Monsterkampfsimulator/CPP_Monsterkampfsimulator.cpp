@@ -1,4 +1,5 @@
 #include <iostream>
+#include <windows.h>
 #include "CPP_Monsterkampfsimulator.h"
 #include "Monster.h"
 #include "StringifierClass.h"
@@ -6,6 +7,10 @@
 using namespace std;
 int main(int argc, char* argv[])
 {
+    HWND console = GetConsoleWindow();
+    SetWindowLong(console, GWL_STYLE, GetWindowLong(console, GWL_STYLE) & ~WS_MAXIMIZEBOX & ~WS_SIZEBOX);
+    SetWindowPos(console, NULL, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED);
+    ShowWindow(console, SW_MAXIMIZE);
     // initilatation of objects for the game
     MainMenu menuObj;
     StringifierClass strings{};
