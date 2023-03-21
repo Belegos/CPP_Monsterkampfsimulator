@@ -21,7 +21,7 @@
     <ClCompile Include="Monster.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PrinterClass.cpp">
+    <ClCompile Include="StringifierClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MainMenu.cpp">
@@ -38,7 +38,7 @@
     <ClInclude Include="CPP_Monsterkampfsimulator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PrinterClass.h">
+    <ClInclude Include="StringifierClass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MainMenu.h">

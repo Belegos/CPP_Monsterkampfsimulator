@@ -79,15 +79,21 @@ const enum MonsterType
 	MAX_MONSTER_TYPES
 };
 
-void Monster::PrintHealth()
+// Property Getters and Setters
+int Monster::GetHealth()
 {
-	cout << HealthDisplay();
+	return _currentHealth;
 };
-
-string Monster::HealthDisplay() 
+void Monster::SetHealth(int _newHealth)
 {
-	string _maxHealth = to_string(_monsterHealth);
-	string _current = to_string(_currentHealth);
-	string _output =  "current {" + _current + "/" + _maxHealth+"} Life";
-	return _output;
-}
+	_currentHealth = _newHealth;
+};
+int Monster::GetMaxHealth() 
+{
+	return _monsterHealth;
+};
+void Monster::SetMaxHealth(int _newHealth)
+{
+	_monsterHealth = _newHealth;
+};
+// end of Property Getters and Setters

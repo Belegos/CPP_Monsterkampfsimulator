@@ -3,10 +3,13 @@
 using std::string; //also in .cpp?
 class Monster {
 public:
-	void PrintHealth();
-	string HealthDisplay();
+	int GetHealth();
+	void SetHealth(int _newHealth);
+	int GetMaxHealth();
+	void SetMaxHealth(int _newHealth);
 	enum MonsterType;
 	Monster(int _raceChoice);
+	string _monsterRace{};
 	
 private:
 	int _monsterHealth{}; //braces initialize to zero
@@ -14,6 +17,5 @@ private:
 	int _monsterAttack{};
 	int _monsterDefense{};
 	int _monsterSpeed{};
-	string _monsterRace{};
 	int PlayerChoise{};
 };;
