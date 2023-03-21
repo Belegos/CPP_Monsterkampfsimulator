@@ -7,5 +7,6 @@ public:
 private:
 	void Color(int color);
 	void GoToXY(int x, int y);
+	void ClearLine(int y);
 };
 
