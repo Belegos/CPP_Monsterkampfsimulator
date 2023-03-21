@@ -4,11 +4,21 @@ class Monster {
 public:
 	void PrintMonster();
 	void CreateMonster();
-	int PlayerChoise{};
-	const enum MonsterType { DRAGON, GOBLIN, OGRE, ORC, SKELETON, TROLL, VAMPIRE, ZOMBIE, MAX_MONSTER_TYPES };
-	Monster(int PlayerChoise)
+	const enum MonsterType
 	{
-		switch (PlayerChoise) 
+		DRAGON, 
+		GOBLIN, 
+		OGRE, 
+		ORC,
+		SKELETON, 
+		TROLL, 
+		VAMPIRE, 
+		ZOMBIE,
+		MAX_MONSTER_TYPES
+	};
+	Monster(int _raceChoice)
+	{
+		switch (_raceChoice)
 		{
 		case 1:
 			_monsterAttack = 20;
@@ -33,25 +43,25 @@ public:
 			_monsterSpeed = 10;
 			_monsterAttack = 20;
 			_monsterHealth = 10;
-			_monsterRace = "ORC";		
+			_monsterRace = "ORC";
 		case 5:
 			_monsterDefense = 20;
 			_monsterSpeed = 10;
 			_monsterAttack = 20;
 			_monsterHealth = 10;
-			_monsterRace = "SKELETON";		
+			_monsterRace = "SKELETON";
 		case 6:
 			_monsterDefense = 20;
 			_monsterSpeed = 10;
 			_monsterAttack = 20;
 			_monsterHealth = 10;
-			_monsterRace = "TROLL";		
+			_monsterRace = "TROLL";
 		case 7:
 			_monsterDefense = 20;
 			_monsterSpeed = 10;
 			_monsterAttack = 20;
 			_monsterHealth = 10;
-			_monsterRace = "VAMPIRE";		
+			_monsterRace = "VAMPIRE";
 		case 8:
 			_monsterDefense = 20;
 			_monsterSpeed = 10;
@@ -66,4 +76,5 @@ private:
 	int _monsterDefense{};
 	int _monsterSpeed{};
 	string _monsterRace{};
+	int PlayerChoise{};
 };;
