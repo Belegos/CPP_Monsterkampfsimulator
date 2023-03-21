@@ -64,6 +64,7 @@ Monster::Monster(int _raceChoice) //constructor (no return type, same name as cl
 		_monsterRace = "ZOMBIE";
 		break;
 	}
+	_currentHealth = _monsterHealth;
 };
 const enum MonsterType 
 {
@@ -87,5 +88,6 @@ string Monster::HealthDisplay()
 {
 	string _maxHealth = to_string(_monsterHealth);
 	string _current = to_string(_currentHealth);
-	string _output =  "Current {" + _current + "/" + _maxHealth+"} Life";
+	string _output =  "current {" + _current + "/" + _maxHealth+"} Life";
+	return _output;
 }

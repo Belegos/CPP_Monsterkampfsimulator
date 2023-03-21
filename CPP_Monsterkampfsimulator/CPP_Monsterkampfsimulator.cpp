@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
     //cout << "You typed: " << sz << endl; //repeats the whole line
 
     Monster obj1{1};
-    printf("Monster Health: %s", obj1.HealthDisplay());
-    printf("Monster Health: %s", obj1.HealthDisplay());
+    //printf("Monster Health: %s", obj1.HealthDisplay());
+    cout << "Monster " << obj1.HealthDisplay() << endl;
     return 0;
 }
