@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include <string> //also in .cpp?
-using namespace std; //also in .cpp?
+using std::string; //also in .cpp?
 class Monster {
 public:
 	void PrintMonster();
