@@ -109,7 +109,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -155,12 +155,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Artwork.cpp" />
     <ClCompile Include="CPP_Monsterkampfsimulator.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="PrinterClass.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Artwork.h" />
     <ClInclude Include="CPP_Monsterkampfsimulator.h" />
+    <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Monster.h" />
+    <ClInclude Include="PrinterClass.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
