@@ -1,7 +1,8 @@
 #include <iostream>
-#include "Monster.h"
 #include "CPP_Monsterkampfsimulator.h"
+#include "Monster.h"
 #include "StringifierClass.h"
+#include "MainMenu.h"
 using namespace std;
 int main(int argc, char* argv[])
 {
@@ -10,6 +11,8 @@ int main(int argc, char* argv[])
     Monster obj1{1};
 
     cout << obj1._monsterRace<< "\n"<< "Life:" << strings.HealthString(obj1.GetMaxHealth(), obj1.GetHealth()) << endl;
+    
+
     return 0;
 }
 

@@ -13,39 +13,51 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Logic">
+      <UniqueIdentifier>{f9f05e03-d19e-48c8-81e6-736cdce5cb85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Visuall">
+      <UniqueIdentifier>{c6413e0d-262b-4cce-8c57-f3309f6d49ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Logic">
+      <UniqueIdentifier>{e6f2d955-a403-48ec-b6be-18b441b811d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Visuall">
+      <UniqueIdentifier>{ff95ad72-fa60-4209-b10e-1418c854d258}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CPP_Monsterkampfsimulator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Monster.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="StringifierClass.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Artwork.cpp">
+      <Filter>Source Files\Visuall</Filter>
     </ClCompile>
     <ClCompile Include="MainMenu.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Logic</Filter>
     </ClCompile>
-    <ClCompile Include="Artwork.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Monster.cpp">
+      <Filter>Source Files\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="StringifierClass.cpp">
+      <Filter>Source Files\Logic</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Monster.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CPP_Monsterkampfsimulator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="StringifierClass.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Artwork.h">
+      <Filter>Header Files\Visuall</Filter>
     </ClInclude>
     <ClInclude Include="MainMenu.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Logic</Filter>
     </ClInclude>
-    <ClInclude Include="Artwork.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Monster.h">
+      <Filter>Header Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="StringifierClass.h">
+      <Filter>Header Files\Logic</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
