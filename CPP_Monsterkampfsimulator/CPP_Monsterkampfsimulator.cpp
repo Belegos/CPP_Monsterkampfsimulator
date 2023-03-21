@@ -7,10 +7,12 @@ using namespace std;
 int main(int argc, char* argv[])
 {
     // initilatation of objects for the game
+    MainMenu menuObj;
     StringifierClass strings{};
     Monster obj1{1};
 
-    cout << obj1._monsterRace<< "\n"<< "Life:" << strings.HealthString(obj1.GetMaxHealth(), obj1.GetHealth()) << endl;
+    menuObj.StartMenu();
+    //cout << obj1._monsterRace<< "\n"<< "Life:" << strings.HealthString(obj1.GetMaxHealth(), obj1.GetHealth()) << endl;
     
 
     return 0;
