@@ -4,7 +4,6 @@ class MonsterFactory
 {
 public:
 	virtual Monster* createMonster() = 0;
-
 };
 
 class FactoryDragon : public MonsterFactory {

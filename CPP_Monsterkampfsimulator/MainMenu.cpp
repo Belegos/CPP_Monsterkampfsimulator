@@ -1,7 +1,8 @@
-#include "MainMenu.h"
 #include <iostream>
 #include <windows.h>
 #include <conio.h> // non-standart c++ headerfile, for reading user input in windows 
+#include "MainMenu.h"
+#include "Artwork.h"
 using namespace std;
 /// <summary>
 /// The "StartMenu" function displays a menu with three options and
@@ -12,20 +13,31 @@ void MainMenu::StartMenu()
 	int Set[] = { 12,7,7 };	// 7 = white , 12 = red
 	int counter = 1;
 	char key;
+	Artwork art;
 
 	for (int i = 1;;)
 	{
-		GoToXY(10, 5);		//set cursor position
+		GoToXY(0, 0);
+		art.Title();
+		GoToXY(10, 18);		//set cursor position
 		Color(Set[0]);
 		cout << "1. Start Game";
 
-		GoToXY(10, 6);
+		GoToXY(10, 19);
 		Color(Set[1]);
 		cout << "2. Help";
 
-		GoToXY(10, 7);
+		GoToXY(10, 20);
 		Color(Set[2]);
 		cout << "3. Exit";
+		Color(7);
+
+		GoToXY(10, 22);
+		Color(7);
+		cout << "Use the arrow keys to navigate and";
+		GoToXY(10, 23);
+		cout << "the enter key to select an option." << endl;
+		
 
 		key = _getch();		// reads a single character from the keyboard without echoing it to the console.
 
@@ -33,7 +45,7 @@ void MainMenu::StartMenu()
 		{
 			counter++;
 		}
-		else if (key == 72 && (counter >= 2 && counter <=3))	//if key pressed is up arrow
+		else if (key == 72 && (counter >= 2 && counter <= 3))	//if key pressed is up arrow
 		{
 			counter--;
 		}
@@ -43,17 +55,17 @@ void MainMenu::StartMenu()
 			{
 				//start game
 				//ClearLine(9);
-				GoToXY(10, 9);
+				GoToXY(10, 21);
 				ClearCurrentLine();
-				cout << "START GAME" << "\r"<<endl;
+				cout << "START GAME" << "\r" << endl;
 				//break;
 			}
 			else if (counter == 2)
 			{
 				//help
-				ClearLine(9);
-				GoToXY(10, 9);
-				cout << "HELP" << "\r"<<endl;
+				ClearLine(21);
+				GoToXY(10, 21);
+				cout << "HELP" << "\r" << endl;
 				//break;
 			}
 			else if (counter == 3)
@@ -66,7 +78,7 @@ void MainMenu::StartMenu()
 		Set[1] = 7;
 		Set[2] = 7;
 
-		switch (counter) 
+		switch (counter)
 		{
 		case 1:
 			Set[0] = 12; //color.red
@@ -104,7 +116,7 @@ void MainMenu::GoToXY(int x, int y)
 /// Simple cout to clear a line in console.
 /// </summary>
 /// <param name="y = Number of line to clear"></param>
-void MainMenu::ClearLine(int y) 
+void MainMenu::ClearLine(int y)
 {
 	GoToXY(0, y);
 	for (int i = 0; i < 80; i++) {
@@ -112,7 +124,7 @@ void MainMenu::ClearLine(int y)
 	}
 	GoToXY(0, y);
 }
-void MainMenu::ClearCurrentLine() 
+void MainMenu::ClearCurrentLine()
 {
 	std::cout << "\x1b[2K";
 }

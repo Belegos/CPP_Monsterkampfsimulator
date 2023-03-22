@@ -7,20 +7,12 @@
 using namespace std;
 int main()
 {
-	
-
 	// initilatation of objects for the game
 	MainMenu menuObj;
 	StringifierClass strings{};
-	Monster obj1{ 1 };
 
 	menuObj.StartMenu();
-	//redundent because only on stack
-	delete& obj1;
-	delete& strings;
-	delete& menuObj;
 	
-
 	//std::nullptr_t nullPtr = nullPtr; //leere Speicheradresse um Pointer vorzueinstellen
 	Monster* pMonster1 = nullptr;
 	Monster* pMonster2 = nullptr;
