@@ -21,8 +21,10 @@ void playBackgroundMusic()
 
 int main()
 {
+	//threaded backgroundmusic with SFML library
 	std::thread musicThread(playBackgroundMusic);
 	musicThread.detach();
+
 	// initilatation of objects for the game
 	MainMenu menuObj;
 	StringifierClass strings{};
