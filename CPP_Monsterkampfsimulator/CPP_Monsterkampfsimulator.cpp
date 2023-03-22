@@ -1,13 +1,13 @@
 #include <iostream>
 #include <thread>
-#include <SFML/Audio.hpp>
+//#include <SFML/Audio.hpp>
 #include "CPP_Monsterkampfsimulator.h"
 #include "MainMenu.h"
 #include "StringifierClass.h"
 #include "Monster.h"
 #include "MonsterFactory.h"
 using namespace std;
-
+/*
 void playBackgroundMusic() 
 {
 	sf::Music music;
@@ -18,12 +18,15 @@ void playBackgroundMusic()
 	music.setLoop(true);
 	music.play();
 }
+*/
 
 int main()
 {
+	/*
 	//threaded backgroundmusic with SFML library
 	std::thread musicThread(playBackgroundMusic);
 	musicThread.detach();
+	*/
 
 	// initilatation of objects for the game
 	MainMenu menuObj;
