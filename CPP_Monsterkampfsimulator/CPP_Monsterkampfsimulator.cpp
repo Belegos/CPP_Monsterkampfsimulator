@@ -1,11 +1,16 @@
+#include <Windows.h>
+#include <mmsystem.h>
 #include <iostream>
 #include <thread>
-//#include <SFML/Audio.hpp>
 #include "CPP_Monsterkampfsimulator.h"
 #include "MainMenu.h"
 #include "StringifierClass.h"
 #include "Monster.h"
 #include "MonsterFactory.h"
+//#include <SFML/Audio.hpp>
+
+#pragma comment(lib, "winmm.lib")
+
 using namespace std;
 /*
 void playBackgroundMusic() 
@@ -20,13 +25,10 @@ void playBackgroundMusic()
 }
 */
 
+
 int main()
 {
-	/*
-	//threaded backgroundmusic with SFML library
-	std::thread musicThread(playBackgroundMusic);
-	musicThread.detach();
-	*/
+	StartThreadedBackgroundMusic();
 
 	// initilatation of objects for the game
 	MainMenu menuObj;
@@ -77,8 +79,21 @@ int main()
 	return 0;
 }
 
+void playBackgroundMusic()
+{
+	wchar_t wstr[] = L"music.wav";
+	PlaySound(wstr, NULL, SND_ASYNC | SND_LOOP);
+}
 
+void StartThreadedBackgroundMusic()
+{
+	//threaded backgroundmusic with SFML library
+	std::thread musicThread(playBackgroundMusic);
+	musicThread.detach();
+}
 //cout << obj1._monsterRace<< "\n"<< "Life:" << strings.HealthString(obj1.GetMaxHealth(), obj1.GetHealth()) << endl;
+
+
 
 
 
