@@ -12,60 +12,62 @@ Monster::Monster(const int& _raceChoice) //constructor (no return type, same nam
 		_monsterDefense = 20;
 		_monsterSpeed = 10;
 		_monsterHealth = 80;
-		_monsterRace = "DRAGON";
+		_monsterRace = "Dragon";
 		break;
 	case 2:
 		_monsterAttack = 10;
 		_monsterDefense = 10;
 		_monsterSpeed = 10;
 		_monsterHealth = 7;
-		_monsterRace = "GOBLIN";
+		_monsterRace = "Goblin";
 		break;
 	case 3:
 		_monsterAttack = 20;
 		_monsterDefense = 20;
 		_monsterSpeed = 10;
 		_monsterHealth = 80;
-		_monsterRace = "OGRE";
+		_monsterRace = "Ogre";
 		break;
 	case 4:
 		_monsterDefense = 20;
 		_monsterSpeed = 10;
 		_monsterAttack = 20;
 		_monsterHealth = 10;
-		_monsterRace = "ORC";
+		_monsterRace = "Orc";
 		break;
 	case 5:
 		_monsterDefense = 20;
 		_monsterSpeed = 10;
 		_monsterAttack = 20;
 		_monsterHealth = 10;
-		_monsterRace = "SKELETON";
+		_monsterRace = "Skeleton";
 		break;
 	case 6:
 		_monsterDefense = 20;
 		_monsterSpeed = 10;
 		_monsterAttack = 20;
 		_monsterHealth = 10;
-		_monsterRace = "TROLL";
+		_monsterRace = "Troll";
 		break;
 	case 7:
 		_monsterDefense = 20;
 		_monsterSpeed = 10;
 		_monsterAttack = 20;
 		_monsterHealth = 10;
-		_monsterRace = "VAMPIRE";
+		_monsterRace = "Vampire";
 		break;
 	case 8:
 		_monsterDefense = 20;
 		_monsterSpeed = 10;
 		_monsterAttack = 20;
 		_monsterHealth = 10;
-		_monsterRace = "ZOMBIE";
+		_monsterRace = "Zombie";
 		break;
 	}
 	_currentHealth = _monsterHealth;
 };
+
+//TODO: Use enum to define _monsterRace
 const enum MonsterType 
 {
 	DRAGON,

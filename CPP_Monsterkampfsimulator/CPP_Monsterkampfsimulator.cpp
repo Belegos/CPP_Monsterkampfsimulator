@@ -7,8 +7,8 @@
 using namespace std;
 int main()
 {
-	/*
 	
+
 	// initilatation of objects for the game
 	MainMenu menuObj;
 	StringifierClass strings{};
@@ -19,16 +19,22 @@ int main()
 	delete& obj1;
 	delete& strings;
 	delete& menuObj;
-	*/
+	
 
 	//std::nullptr_t nullPtr = nullPtr; //leere Speicheradresse um Pointer vorzueinstellen
-	Monster* pMonster = nullptr;
+	Monster* pMonster1 = nullptr;
+	Monster* pMonster2 = nullptr;
 
 	MonsterFactory* factory = new FactoryDragon();
-	if(pMonster != nullptr){pMonster = nullptr;}
-	pMonster = factory->createMonster();
+	if (pMonster1 != nullptr) { pMonster1 = nullptr; }
+	pMonster1 = factory->createMonster();
 
-	cout << "Monster: "<< pMonster->_monsterRace << endl;
+	factory = new FactoryGoblin();
+	if (pMonster2 != nullptr) { pMonster2 = nullptr; }
+	pMonster2 = factory->createMonster();
+
+	cout << "Monster1: " << pMonster1->_monsterRace << endl;
+	cout << "Monster2: " << pMonster2->_monsterRace << endl;
 
 	/********************************/
 	/*
@@ -44,7 +50,17 @@ int main()
 	pMonster = nullptr;
 	*/
 	/********************************/
-
+	
+	if (pMonster1 != nullptr)
+	{
+		delete pMonster1;
+		pMonster1 = nullptr;
+	}
+	if (pMonster2 != nullptr)
+	{
+		delete pMonster2;
+		pMonster2 = nullptr;
+	}
 
 	return 0;
 }
