@@ -13,7 +13,6 @@ int main()
 
 	menuObj.StartMenu();
 	
-	//std::nullptr_t nullPtr = nullPtr; //leere Speicheradresse um Pointer vorzueinstellen
 	Monster* pMonster1 = nullptr;
 	Monster* pMonster2 = nullptr;
 
