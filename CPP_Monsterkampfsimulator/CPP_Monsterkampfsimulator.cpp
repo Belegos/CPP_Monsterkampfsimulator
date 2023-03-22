@@ -33,8 +33,8 @@ int main()
 	}
 	cout << "Monster: "<< pMonster << endl;
 
-
 	/********************************/
+	/*
 	//TODO: add nullptr check
 	//create NullPointer
 	MainMenu* pMainMenu = nullptr;
@@ -45,6 +45,7 @@ int main()
 	delete pMainMenu;
 	//free Heap-Adress
 	pMonster = nullptr;
+	*/
 	/********************************/
 
 
