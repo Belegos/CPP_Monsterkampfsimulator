@@ -25,13 +25,10 @@ int main()
 	Monster* pMonster = nullptr;
 
 	MonsterFactory* factory = new FactoryDragon();
-	Monster* dragon = factory->createMonster();
-	if (pMonster != nullptr)pMonster = nullptr;
-	else
-	{
-		pMonster = dragon;
-	}
-	cout << "Monster: "<< pMonster << endl;
+	if(pMonster != nullptr){pMonster = nullptr;}
+	pMonster = factory->createMonster();
+
+	cout << "Monster: "<< pMonster->_monsterRace << endl;
 
 	/********************************/
 	/*
