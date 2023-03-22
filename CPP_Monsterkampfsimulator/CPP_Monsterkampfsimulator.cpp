@@ -1,12 +1,28 @@
 #include <iostream>
+#include <thread>
+#include <SFML/Audio.hpp>
 #include "CPP_Monsterkampfsimulator.h"
 #include "MainMenu.h"
 #include "StringifierClass.h"
 #include "Monster.h"
 #include "MonsterFactory.h"
 using namespace std;
+
+void playBackgroundMusic() 
+{
+	sf::Music music;
+	if (!music.openFromFile("music.mp3")) 
+	{
+		return;
+	}
+	music.setLoop(true);
+	music.play();
+}
+
 int main()
 {
+	std::thread musicThread(playBackgroundMusic);
+	musicThread.detach();
 	// initilatation of objects for the game
 	MainMenu menuObj;
 	StringifierClass strings{};
