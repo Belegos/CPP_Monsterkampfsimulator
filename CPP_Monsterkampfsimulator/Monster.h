@@ -4,11 +4,11 @@ using std::string; //also in .cpp?
 class Monster {
 public:
 	int GetHealth();
-	void SetHealth(int _newHealth);
+	void SetHealth(const int& _newHealth);
 	int GetMaxHealth();
-	void SetMaxHealth(int _newHealth);
+	void SetMaxHealth(const int& _newHealth);
 	enum MonsterType;
-	Monster(int _raceChoice);
+	Monster(const int& _raceChoice);
 	string _monsterRace{};
 	
 private:

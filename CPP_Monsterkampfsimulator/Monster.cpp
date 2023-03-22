@@ -2,7 +2,7 @@
 #include <iostream>
 using std::cout;
 using std::to_string;
-Monster::Monster(int _raceChoice) //constructor (no return type, same name as class
+Monster::Monster(const int& _raceChoice) //constructor (no return type, same name as class
 {
 	//constructor code
 	switch (_raceChoice)
@@ -84,7 +84,7 @@ int Monster::GetHealth()
 {
 	return _currentHealth;
 };
-void Monster::SetHealth(int _newHealth)
+void Monster::SetHealth(const int& _newHealth)
 {
 	_currentHealth = _newHealth;
 };
@@ -92,7 +92,7 @@ int Monster::GetMaxHealth()
 {
 	return _monsterHealth;
 };
-void Monster::SetMaxHealth(int _newHealth)
+void Monster::SetMaxHealth(const int& _newHealth)
 {
 	_monsterHealth = _newHealth;
 };

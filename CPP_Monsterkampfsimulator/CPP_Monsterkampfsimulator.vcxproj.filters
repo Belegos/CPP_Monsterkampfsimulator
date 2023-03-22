@@ -5,59 +5,62 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\Logic">
+    <Filter Include="Source Files\Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files\Logic">
       <UniqueIdentifier>{f9f05e03-d19e-48c8-81e6-736cdce5cb85}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Visuall">
+    <Filter Include="Resource Files\Visuall">
       <UniqueIdentifier>{c6413e0d-262b-4cce-8c57-f3309f6d49ab}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Logic">
-      <UniqueIdentifier>{e6f2d955-a403-48ec-b6be-18b441b811d9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Visuall">
+    <Filter Include="Source Files\Visuall">
       <UniqueIdentifier>{ff95ad72-fa60-4209-b10e-1418c854d258}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CPP_Monsterkampfsimulator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Artwork.cpp">
-      <Filter>Source Files\Visuall</Filter>
+      <Filter>Resource Files\Visuall</Filter>
     </ClCompile>
     <ClCompile Include="MainMenu.cpp">
-      <Filter>Source Files\Logic</Filter>
+      <Filter>Resource Files\Logic</Filter>
     </ClCompile>
     <ClCompile Include="Monster.cpp">
-      <Filter>Source Files\Logic</Filter>
+      <Filter>Resource Files\Logic</Filter>
     </ClCompile>
     <ClCompile Include="StringifierClass.cpp">
-      <Filter>Source Files\Logic</Filter>
+      <Filter>Resource Files\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="MonsterFactory.cpp">
+      <Filter>Resource Files\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="CPP_Monsterkampfsimulator.cpp">
+      <Filter>Resource Files\Logic</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CPP_Monsterkampfsimulator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Artwork.h">
-      <Filter>Header Files\Visuall</Filter>
-    </ClInclude>
-    <ClInclude Include="MainMenu.h">
-      <Filter>Header Files\Logic</Filter>
-    </ClInclude>
-    <ClInclude Include="Monster.h">
-      <Filter>Header Files\Logic</Filter>
+      <Filter>Source Files\Visuall</Filter>
     </ClInclude>
     <ClInclude Include="StringifierClass.h">
-      <Filter>Header Files\Logic</Filter>
+      <Filter>Source Files\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CPP_Monsterkampfsimulator.h">
+      <Filter>Source Files\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>Source Files\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>Source Files\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterFactory.h">
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
