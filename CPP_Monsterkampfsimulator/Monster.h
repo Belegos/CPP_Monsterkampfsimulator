@@ -1,13 +1,14 @@
 ﻿#pragma once
 #include <string> //also in .cpp?
 using std::string; //also in .cpp?
-class Monster {
+class Monster 
+{
 public:
 	int GetHealth();
 	void SetHealth(const int& _newHealth);
 	int GetMaxHealth();
 	void SetMaxHealth(const int& _newHealth);
-	enum MonsterType;
+	const enum class MonsterType;
 	Monster(const int& _raceChoice);
 	string _monsterRace{};
 	

@@ -94,6 +94,13 @@ void StartThreadedBackgroundMusic()
 //cout << obj1._monsterRace<< "\n"<< "Life:" << strings.HealthString(obj1.GetMaxHealth(), obj1.GetHealth()) << endl;
 
 
+// int* pNumber -> Pointer to an integeradress
+// &iNumber -> Adress of iNumber
+// *pNumber -> Value of the adress of pNumber
+// int* pNumber = &iNumber -> Pointer to the adress of iNumber
+// int* pNumber = new int; -> Pointer to a new integeradress
+// delete pNumber; -> free the adress of pNumber
+// pNumber = nullptr; -> free the adress of pNumber
 
 
 

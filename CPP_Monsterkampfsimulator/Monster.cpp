@@ -68,7 +68,7 @@ Monster::Monster(const int& _raceChoice) //constructor (no return type, same nam
 };
 
 //TODO: Use enum to define _monsterRace
-const enum MonsterType 
+const enum class MonsterType 
 {
 	DRAGON,
 	GOBLIN,

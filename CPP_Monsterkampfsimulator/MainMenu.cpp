@@ -120,11 +120,18 @@ void MainMenu::GoToXY(int x, int y)
 void MainMenu::ClearLine(int y)
 {
 	GoToXY(0, y);
-	for (int i = 0; i < 80; i++) {
+	for (int i = 0; i < 80; i++) 
+	{
 		cout << " ";
 	}
 	GoToXY(0, y);
 }
+/// <summary>
+/// The method clears the current line in the console 
+/// by outputting the escape sequence "\x1b[2K", 
+/// which clears the line from the current cursor 
+/// position to the end of the line.
+/// </summary>
 void MainMenu::ClearCurrentLine()
 {
 	std::cout << "\x1b[2K";
