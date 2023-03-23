@@ -4,6 +4,7 @@
 #include "MainMenu.h"
 #include "Artwork.h"
 using namespace std;
+
 /// <summary>
 /// The "StartMenu" function displays a menu with three options and
 /// allows the user to navigate and select an option using arrow keys and the enter key. 
