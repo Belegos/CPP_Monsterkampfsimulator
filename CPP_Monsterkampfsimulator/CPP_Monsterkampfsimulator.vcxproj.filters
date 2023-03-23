@@ -71,5 +71,18 @@
     <ClInclude Include="CPP_Monsterkampfsimulator.h">
       <Filter>Core\Header</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CPP_Monsterkampfsimulator.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="music.wav">
+      <Filter>Source Files</Filter>
+    </Media>
   </ItemGroup>
 </Project>

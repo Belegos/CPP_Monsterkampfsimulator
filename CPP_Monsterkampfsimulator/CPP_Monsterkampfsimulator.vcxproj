@@ -171,7 +171,20 @@
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="MonsterFactory.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="StringifierClass.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CPP_Monsterkampfsimulator.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="music.wav">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <DeploymentContent>true</DeploymentContent>
+    </Media>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
