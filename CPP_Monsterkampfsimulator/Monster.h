@@ -1,6 +1,6 @@
 ﻿#pragma once
-#include <string> //also in .cpp?
-using std::string; //also in .cpp?
+#include <string> 
+using std::string; 
 class Monster 
 {
 public:
