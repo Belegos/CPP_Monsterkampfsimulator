@@ -42,9 +42,12 @@ void StartThreadedBackgroundMusic()
 	musicThread.detach();
 }
 #pragma endregion
+
+#pragma region Forward_Declaration
 MainMenu* pMainMenu;
 StringifierClass* pStringifierClass;
 Commands* pCommands;
+#pragma endregion
 
 static void Init() 
 {
