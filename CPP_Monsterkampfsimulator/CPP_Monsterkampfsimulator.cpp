@@ -1,20 +1,19 @@
-#pragma region includes
+#pragma once
 #include <iostream>
 #include <Windows.h>
 #include <mmsystem.h>
 #include <thread>
 #include "Commands.h"
 #include "MainMenu.h"
-
 //put these using to other classes where used
 #include "StringifierClass.h"
 #include "Monster.h"
 #include "MonsterFactory.h"
 //#include <SFML/Audio.hpp>
-
 #pragma comment(lib, "winmm.lib")
-#pragma endregion includes
+
 using namespace std;
+
 #pragma region preMain()
 #pragma region MusicThreaded
 void playBackgroundMusic()
@@ -72,10 +71,9 @@ int main()
 	pStringifierClass = new StringifierClass();
 	pCommands = new Commands();
 #pragma endregion obj_creation
-
+#pragma region startMainLoop
 	// initilatation of objects for the game
 	pMainMenu->StartMenu(pCommands);
-
 #pragma region TestingArea
 		Monster* pMonster1 = nullptr;
 		Monster* pMonster2 = nullptr;
@@ -91,20 +89,7 @@ int main()
 		cout << "Monster1: " << pMonster1->_monsterRace << endl;
 		cout << "Monster2: " << pMonster2->_monsterRace << endl;
 
-		/********************************/
-		/*
-		//TODO: add nullptr check
-		//create NullPointer
-		MainMenu* pMainMenu = nullptr;
-		//Ctor -> Constructor -> give Pointer Heap-Adress
-		pMainMenu = new MainMenu();
-		pMainMenu->StartMenu();
-		//Dtor -> Destructor
-		delete pMainMenu;
-		//free Heap-Adress
-		pMonster = nullptr;
-		*/
-		/********************************/
+
 		setPointerNullDeleteObject(pMonster1);
 		setPointerNullDeleteObject(pMonster2);
 #pragma endregion TestingArea
@@ -112,6 +97,7 @@ int main()
 	setPointerNullDeleteObject(pCommands);
 	setPointerNullDeleteObject(pStringifierClass);
 	setPointerNullDeleteObject(pMainMenu);
+#pragma endregion startMainLoop
 
 	return 0;
 }
