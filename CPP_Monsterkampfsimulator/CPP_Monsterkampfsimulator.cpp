@@ -53,6 +53,8 @@ int main()
 	checkNullPtr(pStringifierClass);
 	checkNullPtr(pCommands);
 
+	StartThreadedBackgroundMusic();
+
 	pMainMenu = new MainMenu();
 	pStringifierClass = new StringifierClass();
 	pCommands = new Commands();
