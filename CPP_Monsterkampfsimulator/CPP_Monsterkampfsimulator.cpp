@@ -1,3 +1,4 @@
+#pragma region includes
 #include <iostream>
 #include <Windows.h>
 #include <mmsystem.h>
@@ -12,8 +13,23 @@
 //#include <SFML/Audio.hpp>
 
 #pragma comment(lib, "winmm.lib")
-
+#pragma endregion includes
 using namespace std;
+#pragma region preMain()
+#pragma region MusicThreaded
+void playBackgroundMusic()
+{
+	wchar_t wstr[] = L"music.wav";
+	PlaySound(wstr, NULL, SND_ASYNC | SND_LOOP);
+}
+void StartThreadedBackgroundMusic()
+{
+	//threaded backgroundmusic with SFML library
+	std::thread musicThread(playBackgroundMusic);
+	musicThread.detach();
+}
+#pragma endregion
+
 #pragma region NullPtrCheck and Obj delete
 template<typename T>
 void checkNullPtr(T*& pPointer)
@@ -26,20 +42,6 @@ void setPointerNullDeleteObject(T*& pPointer)
 {
 	if (pPointer != nullptr) { delete pPointer; };
 	pPointer = nullptr;
-}
-#pragma endregion
-
-#pragma region MusicThreaded
-void playBackgroundMusic()
-{
-	wchar_t wstr[] = L"music.wav";
-	PlaySound(wstr, NULL, SND_ASYNC | SND_LOOP);
-}
-void StartThreadedBackgroundMusic()
-{
-	//threaded backgroundmusic with SFML library
-	std::thread musicThread(playBackgroundMusic);
-	musicThread.detach();
 }
 #pragma endregion
 
@@ -58,20 +60,23 @@ static void Init()
 	checkNullPtr(pStringifierClass);
 	checkNullPtr(pCommands);
 }
+#pragma endregion
 int main()
 {
 	Init();
-
+#pragma region background_tasks
 	StartThreadedBackgroundMusic();
-
+#pragma endregion background_tasks
+#pragma region obj_creation
 	pMainMenu = new MainMenu();
 	pStringifierClass = new StringifierClass();
 	pCommands = new Commands();
+#pragma endregion obj_creation
 
 	// initilatation of objects for the game
 	pMainMenu->StartMenu(pCommands);
 
-	{ //Testing-Area
+#pragma region TestingArea
 		Monster* pMonster1 = nullptr;
 		Monster* pMonster2 = nullptr;
 
@@ -102,7 +107,7 @@ int main()
 		/********************************/
 		setPointerNullDeleteObject(pMonster1);
 		setPointerNullDeleteObject(pMonster2);
-	}
+#pragma endregion TestingArea
 
 	setPointerNullDeleteObject(pCommands);
 	setPointerNullDeleteObject(pStringifierClass);
@@ -110,11 +115,6 @@ int main()
 
 	return 0;
 }
-/// <summary>
-/// 
-/// </summary>
-/// <typeparam name="T"></typeparam>
-/// <param name="pPointer"></param>
 
 /*
 void playBackgroundMusic()
