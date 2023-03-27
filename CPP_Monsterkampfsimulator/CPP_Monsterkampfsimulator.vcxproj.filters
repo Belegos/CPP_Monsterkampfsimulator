@@ -54,6 +54,9 @@
     <ClCompile Include="CPP_Monsterkampfsimulator.cpp">
       <Filter>Core\Logic</Filter>
     </ClCompile>
+    <ClCompile Include="Commands.cpp">
+      <Filter>Source Files\Logic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Artwork.h">
@@ -75,6 +78,9 @@
       <Filter>Core\Header</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Commands.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

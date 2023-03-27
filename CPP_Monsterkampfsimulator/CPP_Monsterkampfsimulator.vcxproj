@@ -159,6 +159,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Artwork.cpp" />
+    <ClCompile Include="Commands.cpp" />
     <ClCompile Include="CPP_Monsterkampfsimulator.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Monster.cpp" />
@@ -167,6 +168,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Artwork.h" />
+    <ClInclude Include="Commands.h" />
     <ClInclude Include="CPP_Monsterkampfsimulator.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Monster.h" />
