@@ -9,10 +9,6 @@ public:
 	void ClearCurrentLine();
 private:
 
-//Music
-public:
-	void StartThreadedBackgroundMusic();
-private:
-	void playBackgroundMusic();
+
 };
 

@@ -51,16 +51,3 @@ void Commands::ClearCurrentLine()
 {
 	std::cout << "\x1b[2K";
 }
-
-void Commands::playBackgroundMusic()
-{
-	wchar_t wstr[] = L"music.wav";
-	PlaySound(wstr, NULL, SND_ASYNC | SND_LOOP);
-}
-
-void Commands::StartThreadedBackgroundMusic()
-{
-	//threaded backgroundmusic with SFML library
-	std::thread musicThread(playBackgroundMusic);
-	musicThread.detach();
-}

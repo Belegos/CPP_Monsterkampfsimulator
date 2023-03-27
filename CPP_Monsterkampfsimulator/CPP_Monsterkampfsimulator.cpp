@@ -1,6 +1,7 @@
+#include <iostream>
 #include <Windows.h>
 #include <mmsystem.h>
-#include <iostream>
+#include <thread>
 #include "Commands.h"
 #include "MainMenu.h"
 
@@ -13,7 +14,34 @@
 #pragma comment(lib, "winmm.lib")
 
 using namespace std;
+#pragma region NullPtrCheck and Obj delete
+template<typename T>
+void checkNullPtr(T*& pPointer)
+{
+	if (pPointer != nullptr) { pPointer = nullptr; }
+	else {}
+}
+template<typename T>
+void setPointerNullDeleteObject(T*& pPointer)
+{
+	if (pPointer != nullptr) { delete pPointer; };
+	pPointer = nullptr;
+}
+#pragma endregion
 
+#pragma region MusicThreaded
+void playBackgroundMusic()
+{
+	wchar_t wstr[] = L"music.wav";
+	PlaySound(wstr, NULL, SND_ASYNC | SND_LOOP);
+}
+void StartThreadedBackgroundMusic()
+{
+	//threaded backgroundmusic with SFML library
+	std::thread musicThread(playBackgroundMusic);
+	musicThread.detach();
+}
+#pragma endregion
 
 int main()
 {
@@ -30,8 +58,7 @@ int main()
 	pCommands = new Commands();
 
 	// initilatation of objects for the game
-	pCommands->StartThreadedBackgroundMusic();
-	pMainMenu->StartMenu();
+	pMainMenu->StartMenu(pCommands);
 
 	{ //Testing-Area
 		Monster* pMonster1 = nullptr;
@@ -77,18 +104,6 @@ int main()
 /// </summary>
 /// <typeparam name="T"></typeparam>
 /// <param name="pPointer"></param>
-template<typename T>
-void checkNullPtr(T*& pPointer)
-{
-	if (pPointer != nullptr) { pPointer = nullptr; }
-	else {}
-}
-template<typename T>
-void setPointerNullDeleteObject(T*& pPointer)
-{
-	if (pPointer == nullptr) { delete pPointer };
-	else { pPointer = nullptr; }
-}
 
 /*
 void playBackgroundMusic()

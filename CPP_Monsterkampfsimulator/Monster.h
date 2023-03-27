@@ -1,5 +1,5 @@
 ﻿#pragma once
-//#include <string> //also in .cpp?
+#include <string> //also in .cpp?
 using std::string; //also in .cpp?
 class Monster 
 {

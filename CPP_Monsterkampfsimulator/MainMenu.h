@@ -3,6 +3,6 @@
 class MainMenu
 {
 public:
-	void StartMenu(Commands& pCommands);
+	void StartMenu(Commands* const pCommands);
 };
 

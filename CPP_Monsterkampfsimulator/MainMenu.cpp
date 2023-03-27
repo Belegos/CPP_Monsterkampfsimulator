@@ -8,7 +8,7 @@ using namespace std;
 /// The "StartMenu" function displays a menu with three options and
 /// allows the user to navigate and select an option using arrow keys and the enter key. 
 /// </summary>
-void MainMenu::StartMenu(Commands& pCommands)
+void MainMenu::StartMenu(Commands* const pCommands)// const = read only Pointer, to prevent creating a new obj on the pointer while using 
 {
 	int Set[] = { 12,7,7 };	// 7 = white , 12 = red
 	int counter = 1;
@@ -17,25 +17,25 @@ void MainMenu::StartMenu(Commands& pCommands)
 
 	for (int i = 1;;)
 	{
-		pCommands.GoToXY(0, 0);
+		pCommands->GoToXY(0, 0);
 		art.Title();
-		pCommands.GoToXY(10, 18);//set cursor position
-		pCommands.Color(Set[0]);
+		pCommands->GoToXY(10, 18);//set cursor position
+		pCommands->Color(Set[0]);
 		cout << "1. Start Game";
 
-		pCommands.GoToXY(10, 19);
-		pCommands.Color(Set[1]);
+		pCommands->GoToXY(10, 19);
+		pCommands->Color(Set[1]);
 		cout << "2. Help";
 
-		pCommands.GoToXY(10, 20);
-		pCommands.Color(Set[2]);
+		pCommands->GoToXY(10, 20);
+		pCommands->Color(Set[2]);
 		cout << "3. Exit";
-		pCommands.Color(7);
+		pCommands->Color(7);
 
-		pCommands.GoToXY(10, 22);
-		pCommands.Color(7);
+		pCommands->GoToXY(10, 22);
+		pCommands->Color(7);
 		cout << "Use the arrow keys to navigate and";
-		pCommands.GoToXY(10, 23);
+		pCommands->GoToXY(10, 23);
 		cout << "the enter key to select an option." << endl;
 		
 
@@ -55,16 +55,16 @@ void MainMenu::StartMenu(Commands& pCommands)
 			{
 				//start game
 				//ClearLine(9);
-				pCommands.GoToXY(10, 21);
-				pCommands.ClearCurrentLine();
+				pCommands->GoToXY(10, 21);
+				pCommands->ClearCurrentLine();
 				cout << "START GAME" << "\r" << endl;
 				//break;
 			}
 			else if (counter == 2)
 			{
 				//help
-				pCommands.ClearLine(21);
-				pCommands.GoToXY(10, 21);
+				pCommands->ClearLine(21);
+				pCommands->GoToXY(10, 21);
 				cout << "HELP" << "\r" << endl;
 				//break;
 			}
