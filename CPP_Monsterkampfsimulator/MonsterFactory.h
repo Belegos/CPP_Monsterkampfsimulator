@@ -3,12 +3,12 @@
 class MonsterFactory
 {
 public:
-	inline virtual Monster* createMonster() = 0;
+	virtual Monster* createMonster() = 0;
 };
 
 class FactoryDragon : public MonsterFactory {
 public:
-	inline Monster* createMonster()
+	virtual Monster* createMonster()
 	{
 		return new Monster(1);
 	}
@@ -16,7 +16,7 @@ public:
 
 class FactoryGoblin : public MonsterFactory {
 public:
-	inline Monster* createMonster()
+	virtual Monster* createMonster()
 	{
 		return new Monster(2);
 	}
@@ -24,7 +24,7 @@ public:
 
 class FactoryOgre : public MonsterFactory {
 public:
-	inline Monster* createMonster()
+	virtual Monster* createMonster()
 	{
 		return new Monster(3);
 	}
@@ -32,7 +32,7 @@ public:
 
 class FactoryOrc : public MonsterFactory {
 public:
-	inline Monster* createMonster()
+	virtual Monster* createMonster()
 	{
 		return new Monster(4);
 	}
@@ -40,7 +40,7 @@ public:
 
 class FactorySkeleton : public MonsterFactory {
 public:
-	inline Monster* createMonster()
+	virtual Monster* createMonster()
 	{
 		return new Monster(5);
 	}
@@ -48,7 +48,7 @@ public:
 
 class FactoryTroll : public MonsterFactory {
 public:
-	inline Monster* createMonster()
+	virtual Monster* createMonster()
 	{
 		return new Monster(6);
 	}
@@ -56,7 +56,7 @@ public:
 
 class FactoryVampire : public MonsterFactory {
 public:
-	inline Monster* createMonster()
+	virtual Monster* createMonster()
 	{
 		return new Monster(7);
 	}
@@ -64,7 +64,7 @@ public:
 
 class FactoryZombie : public MonsterFactory {
 public:
-	inline Monster* createMonster()
+	virtual Monster* createMonster()
 	{
 		return new Monster(8);
 	}

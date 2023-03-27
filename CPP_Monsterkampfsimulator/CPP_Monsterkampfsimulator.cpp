@@ -42,16 +42,22 @@ void StartThreadedBackgroundMusic()
 	musicThread.detach();
 }
 #pragma endregion
+MainMenu* pMainMenu;
+StringifierClass* pStringifierClass;
+Commands* pCommands;
 
-int main()
+static void Init() 
 {
-	MainMenu* pMainMenu = nullptr;
-	StringifierClass* pStringifierClass = nullptr;
-	Commands* pCommands = nullptr;
-
+	pMainMenu = nullptr;
+	pStringifierClass = nullptr;
+	pCommands = nullptr;
 	checkNullPtr(pMainMenu);
 	checkNullPtr(pStringifierClass);
 	checkNullPtr(pCommands);
+}
+int main()
+{
+	Init();
 
 	StartThreadedBackgroundMusic();
 
@@ -67,11 +73,11 @@ int main()
 		Monster* pMonster2 = nullptr;
 
 		MonsterFactory* factory = new FactoryDragon();
-		if (pMonster1 != nullptr) { pMonster1 = nullptr; }
+		checkNullPtr(pMonster1);
 		pMonster1 = factory->createMonster();
 
 		factory = new FactoryGoblin();
-		if (pMonster2 != nullptr) { pMonster2 = nullptr; }
+		checkNullPtr(pMonster2);
 		pMonster2 = factory->createMonster();
 
 		cout << "Monster1: " << pMonster1->_monsterRace << endl;
@@ -95,10 +101,10 @@ int main()
 		setPointerNullDeleteObject(pMonster2);
 	}
 
-
 	setPointerNullDeleteObject(pCommands);
 	setPointerNullDeleteObject(pStringifierClass);
 	setPointerNullDeleteObject(pMainMenu);
+
 	return 0;
 }
 /// <summary>
