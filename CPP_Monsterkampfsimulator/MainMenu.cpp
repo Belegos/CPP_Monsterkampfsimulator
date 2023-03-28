@@ -67,7 +67,7 @@ void MainMenu::StartMenu(Commands* const pCommands, Artwork* const pArtwork, std
 				pCommands->GoToXY(10, 22);
 				pCommands->ClearCurrentLine();
 				cout << "START GAME" << "\r" << endl;
-				//break;
+				continue;
 			}
 			else if (counter == 2)
 			{
@@ -119,18 +119,20 @@ void MainMenu::StartMenu(Commands* const pCommands, Artwork* const pArtwork, std
 	}
 }
 
-void MainMenu::DisplayOptions(Commands* const pCommands, Artwork* const pArtwork, std::thread* pMusicThread, MainMenu* const pMainMenu, bool _musicIsPlaying)
+void MainMenu::DisplayOptions(Commands* const pCommands, Artwork* const pArtwork, std::thread* pMusicThread, MainMenu* const pMainMenu, bool pMusicIsPlaying)
 {
 	int i = 1;
 	int counter = 1;
 	int Set[] = { 12,7 };	// 7 = white , 12 = red
 	char key;
+
 	system("cls");
 	pCommands->GoToXY(0, 0);
 	pArtwork->Options();
 	pCommands->GoToXY(10, 7);//set cursor position
 	pCommands->Color(Set[1]);
 	cout << "Options";
+
 	for (i = 1;;)
 	{
 
@@ -141,6 +143,7 @@ void MainMenu::DisplayOptions(Commands* const pCommands, Artwork* const pArtwork
 		pCommands->GoToXY(10, 10);
 		pCommands->Color(Set[1]);
 		cout << "2. Back";
+
 
 
 		key = _getch();		// reads a single character from the keyboard without echoing it to the console.
@@ -157,39 +160,39 @@ void MainMenu::DisplayOptions(Commands* const pCommands, Artwork* const pArtwork
 		{
 			if (counter == 1 && key == 13)
 			{
-				//pCommands->Color(7);
 				if (pMusicThread != nullptr)
 				{
-					switch (_musicIsPlaying)
+					switch (pMusicIsPlaying)
 					{
 					case true:
-						_musicIsPlaying = false;
 						pMusicThread->join();
 						PlaySound(NULL, NULL, 0);
+						pMusicIsPlaying = false;
+						pCommands->GoToXY(20,9);
+						cout << " Off "<<endl;
 						break;
 					case false:
 						wchar_t wstr[] = L"music.wav";
 						if (pMusicThread != nullptr) { delete pMusicThread; pMusicThread = nullptr; };
-						if (pMusicThread == nullptr) { pMusicThread = new std::thread(&MainMenu::PlayBackgroundMusic, this); }
-						pMusicThread->detach();
-						_musicIsPlaying = true;
+						if (pMusicThread == nullptr) { pMusicThread = new std::thread(&MainMenu::PlayBackgroundMusic, pMainMenu); }
+						//pMusicThread->detach();
+						pMusicIsPlaying = true;
+						pCommands->GoToXY(20, 9);
+						cout << "  ON" << endl;
 						break;
 					}
 				}
-				if (pMusicThread == nullptr)
-				{
-					continue;
-				}
+				//if (pMusicThread == nullptr)
+				//{
+				//	continue;
+				//}
 				continue;
 			}
 			else if (counter == 2)
 			{
-				//pCommands->GoToXY(10, 10);
-				//pCommands->Color(12);
-				//cout << "2. Back";
 				pCommands->Color(7);
 				system("cls");
-				pMainMenu->StartMenu(pCommands, pArtwork, pMusicThread, pMainMenu, _musicIsPlaying);
+				pMainMenu->StartMenu(pCommands, pArtwork, pMusicThread, this, pMusicIsPlaying);
 			}
 			break;
 		}

@@ -16,15 +16,19 @@
 using namespace std;
 
 #pragma region preMain()
-#pragma region MusicThreaded
 #pragma region Forward_Declaration
+
+//bool _musicIsPlaying{ true };
+bool* pMusicIsPlaying; 
 MainMenu* pMainMenu;
 StringifierClass* pStringifierClass;
 Commands* pCommands;
 Artwork* pArtwork;
 std::thread* pMusicThread;
-bool _musicIsPlaying{ true };
-#pragma endregion
+
+#pragma endregion Forward_Declaration
+
+#pragma region MusicThreaded
 void playBackgroundMusic()
 {
 	wchar_t wstr[] = L"music.wav";
@@ -34,9 +38,10 @@ void StartThreadedBackgroundMusic()
 {
 	//threaded backgroundmusic with SFML library
 	std::thread musicThread(playBackgroundMusic);
+	*pMusicIsPlaying = true;
 	musicThread.detach();
 }
-#pragma endregion
+#pragma endregion MusicThreaded
 
 #pragma region NullPtrCheck and Obj delete
 template<typename T>
@@ -48,6 +53,7 @@ void checkNullPtr(T*& pPointer)
 template<typename T>
 void setPointerNullDeleteObject(T*& pPointer)
 {
+	if (pPointer == nullptr) {};
 	if (pPointer != nullptr) { delete pPointer; };
 	pPointer = nullptr;
 }
@@ -59,6 +65,7 @@ void setPointerNullDeleteObject(T*& pPointer)
 /// </summary>
 static void Init()
 {
+	checkNullPtr(pMusicIsPlaying);
 	checkNullPtr(pMainMenu);
 	checkNullPtr(pStringifierClass);
 	checkNullPtr(pCommands);
@@ -75,12 +82,13 @@ int main()
 	pStringifierClass = new StringifierClass();
 	pCommands = new Commands();
 	pArtwork = new Artwork();
+	pMusicIsPlaying = new bool{true};
 	pMusicThread = new std::thread(StartThreadedBackgroundMusic);
 
 #pragma endregion obj_creation
 
 #pragma region startMainLoop
-	pMainMenu->StartMenu(pCommands, pArtwork, pMusicThread, pMainMenu, _musicIsPlaying);
+	pMainMenu->StartMenu(pCommands, pArtwork, pMusicThread, pMainMenu, pMusicIsPlaying);
 
 #pragma region TestingArea
 	Monster* pMonster1 = nullptr;
