@@ -3,5 +3,6 @@ class Artwork
 {
 public:
 	void Title();
+	void Options();
 };
 

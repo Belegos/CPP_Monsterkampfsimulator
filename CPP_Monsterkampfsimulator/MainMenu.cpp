@@ -1,24 +1,24 @@
 #include <iostream>
-#include "MainMenu.h"
-#include "Artwork.h"
 #include <conio.h>
+#include <cstdlib>
+#include "MainMenu.h"
 using namespace std;
 
 /// <summary>
 /// The "StartMenu" function displays a menu with three options and
 /// allows the user to navigate and select an option using arrow keys and the enter key. 
 /// </summary>
-void MainMenu::StartMenu(Commands* const pCommands)// const = read only Pointer, to prevent creating a new obj on the pointer while using 
+void MainMenu::StartMenu(Commands* const pCommands, Artwork* const pArtwork)// const = read only Pointer, to prevent creating a new obj on the pointer while using 
 {
 	int Set[] = { 12,7,7,7 };	// 7 = white , 12 = red
 	int counter = 1;
+	int counterTwo = 1;
 	char key;
-	Artwork art;
 
+	pArtwork->Title();
 	for (int i = 1;;)
 	{
 		pCommands->GoToXY(0, 0);
-		art.Title();
 		pCommands->GoToXY(10, 18);//set cursor position
 		pCommands->Color(Set[0]);
 		cout << "1. Start Game";
@@ -59,7 +59,6 @@ void MainMenu::StartMenu(Commands* const pCommands)// const = read only Pointer,
 			if (counter == 1)
 			{
 				//start game
-				//ClearLine(9);
 				pCommands->GoToXY(10, 22);
 				pCommands->ClearCurrentLine();
 				cout << "START GAME" << "\r" << endl;
@@ -68,10 +67,11 @@ void MainMenu::StartMenu(Commands* const pCommands)// const = read only Pointer,
 			else if (counter == 2)
 			{
 				//help
-				pCommands->ClearLine(22);
 				pCommands->GoToXY(10, 22);
+				pCommands->ClearCurrentLine();
 				cout << "OPTIONS" << "\r" << endl;
-				//break;
+				DisplayOptions(pCommands, pArtwork);
+				break;
 			}
 			else if (counter == 3)
 			{
@@ -88,6 +88,7 @@ void MainMenu::StartMenu(Commands* const pCommands)// const = read only Pointer,
 				cout << "EXIT" << "\r" << endl;
 				exit(0);
 			}
+			break;
 		}
 
 		Set[0] = 7; //color.white (default)
@@ -108,6 +109,75 @@ void MainMenu::StartMenu(Commands* const pCommands)// const = read only Pointer,
 			break;
 		case 4:
 			Set[3] = 12;
+			break;
+		}
+	}
+}
+
+void MainMenu::DisplayOptions(Commands* const pCommands, Artwork* const pArtwork)
+{
+	int i = 1;
+	int counter = 1;
+	int Set[] = { 12,7 };	// 7 = white , 12 = red
+	char key;
+	system("cls");
+	pCommands->GoToXY(0, 0);
+	pArtwork->Options();
+	pCommands->GoToXY(10, 7);//set cursor position
+	pCommands->Color(Set[1]);
+	cout << "Options";
+	for (i = 1;;)
+	{
+
+		pCommands->GoToXY(10, 9);
+		pCommands->Color(Set[0]);
+		cout << "1. Sound";
+
+		pCommands->GoToXY(10, 10);
+		pCommands->Color(Set[1]);
+		cout << "2. Back";
+
+
+		key = _getch();		// reads a single character from the keyboard without echoing it to the console.
+
+		if (key == 80 && (counter >= 1 && counter <= 1))		//if key pressed is down arrow
+		{
+			counter++;
+		}
+		else if (key == 72 && (counter >= 2 && counter <= 2))	//if key pressed is up arrow
+		{
+			counter--;
+		}
+		else if (key == 13)	//if key pressed is enter
+		{
+			if (counter == 1)
+			{
+				pCommands->GoToXY(10, 9);
+				pCommands->Color(12);
+				cout << "1. Sound";
+				pCommands->Color(7);
+			}
+			else if (counter == 2)
+			{
+				pCommands->GoToXY(10, 10);
+				pCommands->Color(12);
+				cout << "2. Back";
+				pCommands->Color(7);
+				system("cls");
+				StartMenu(pCommands, pArtwork);
+			}
+			break;
+		}
+		Set[0] = 7; //color.white (default)
+		Set[1] = 7;
+
+		switch (counter)
+		{
+		case 1:
+			Set[0] = 12; //color.red
+			break;
+		case 2:
+			Set[1] = 12;
 			break;
 		}
 	}
