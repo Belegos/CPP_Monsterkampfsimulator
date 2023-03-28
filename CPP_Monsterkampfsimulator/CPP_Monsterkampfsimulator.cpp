@@ -17,6 +17,14 @@ using namespace std;
 
 #pragma region preMain()
 #pragma region MusicThreaded
+#pragma region Forward_Declaration
+MainMenu* pMainMenu;
+StringifierClass* pStringifierClass;
+Commands* pCommands;
+Artwork* pArtwork;
+std::thread* pMusicThread;
+bool _musicIsPlaying{ true };
+#pragma endregion
 void playBackgroundMusic()
 {
 	wchar_t wstr[] = L"music.wav";
@@ -45,13 +53,6 @@ void setPointerNullDeleteObject(T*& pPointer)
 }
 #pragma endregion
 
-#pragma region Forward_Declaration
-MainMenu* pMainMenu;
-StringifierClass* pStringifierClass;
-Commands* pCommands;
-Artwork* pArtwork;
-std::thread* pMusicThread;
-#pragma endregion
 /// <summary>
 /// Collection of Pointern, which are check if nullptr,
 ///  if not set to nullptr
@@ -74,12 +75,12 @@ int main()
 	pStringifierClass = new StringifierClass();
 	pCommands = new Commands();
 	pArtwork = new Artwork();
-	pMusicThread = new std::thread(playBackgroundMusic);
+	pMusicThread = new std::thread(StartThreadedBackgroundMusic);
 
 #pragma endregion obj_creation
 
 #pragma region startMainLoop
-	pMainMenu->StartMenu(pCommands, pArtwork, pMusicThread, pMainMenu);
+	pMainMenu->StartMenu(pCommands, pArtwork, pMusicThread, pMainMenu, _musicIsPlaying);
 
 #pragma region TestingArea
 	Monster* pMonster1 = nullptr;

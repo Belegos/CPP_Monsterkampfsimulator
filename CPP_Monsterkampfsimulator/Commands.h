@@ -7,7 +7,5 @@ public:
 	void GoToXY(int x, int y);
 	void ClearLine(int y);
 	void ClearCurrentLine();
-private:
-
 };
 

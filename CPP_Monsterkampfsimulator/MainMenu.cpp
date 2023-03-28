@@ -1,14 +1,19 @@
+#pragma once
 #include <iostream>
 #include <conio.h>
 #include <cstdlib>
+#include <thread>
+#include <Windows.h>
+#include <mmsystem.h>
 #include "MainMenu.h"
+#pragma comment(lib, "winmm.lib")
 using namespace std;
 
 /// <summary>
 /// The "StartMenu" function displays a menu with three options and
 /// allows the user to navigate and select an option using arrow keys and the enter key. 
 /// </summary>
-void MainMenu::StartMenu(Commands* const pCommands, Artwork* const pArtwork, std::thread* const pMusicThread, MainMenu* const pMainMenu)// const = read only Pointer, to prevent creating a new obj on the pointer while using 
+void MainMenu::StartMenu(Commands* const pCommands, Artwork* const pArtwork, std::thread* const pMusicThread, MainMenu* const pMainMenu, bool _musicIsPlaying)// const = read only Pointer, to prevent creating a new obj on the pointer while using 
 {
 	int Set[] = { 12,7,7,7 };	// 7 = white , 12 = red
 	int counter = 1;
@@ -70,7 +75,7 @@ void MainMenu::StartMenu(Commands* const pCommands, Artwork* const pArtwork, std
 				pCommands->GoToXY(10, 22);
 				pCommands->ClearCurrentLine();
 				cout << "OPTIONS" << "\r" << endl;
-				DisplayOptions(pCommands, pArtwork, pMusicThread, pMainMenu);
+				DisplayOptions(pCommands, pArtwork, pMusicThread, this, _musicIsPlaying);
 				break;
 			}
 			else if (counter == 3)
@@ -79,7 +84,7 @@ void MainMenu::StartMenu(Commands* const pCommands, Artwork* const pArtwork, std
 				pCommands->ClearLine(22);
 				pCommands->GoToXY(10, 22);
 				cout << "HELP" << "\r" << endl;
-				//break;
+				continue;
 			}
 			else if (counter == 4)
 			{
@@ -114,7 +119,7 @@ void MainMenu::StartMenu(Commands* const pCommands, Artwork* const pArtwork, std
 	}
 }
 
-void MainMenu::DisplayOptions(Commands* const pCommands, Artwork* const pArtwork, std::thread* const pMusicThread, MainMenu* const pMainMenu)
+void MainMenu::DisplayOptions(Commands* const pCommands, Artwork* const pArtwork, std::thread* pMusicThread, MainMenu* const pMainMenu, bool _musicIsPlaying)
 {
 	int i = 1;
 	int counter = 1;
@@ -150,22 +155,41 @@ void MainMenu::DisplayOptions(Commands* const pCommands, Artwork* const pArtwork
 		}
 		else if (key == 13)	//if key pressed is enter
 		{
-			if (counter == 1)
+			if (counter == 1 && key == 13)
 			{
-				pCommands->GoToXY(10, 9);
-				pCommands->Color(12);
-				cout << "1. Sound";
-				pCommands->Color(7);
-
+				//pCommands->Color(7);
+				if (pMusicThread != nullptr)
+				{
+					switch (_musicIsPlaying)
+					{
+					case true:
+						_musicIsPlaying = false;
+						pMusicThread->join();
+						PlaySound(NULL, NULL, 0);
+						break;
+					case false:
+						wchar_t wstr[] = L"music.wav";
+						if (pMusicThread != nullptr) { delete pMusicThread; pMusicThread = nullptr; };
+						if (pMusicThread == nullptr) { pMusicThread = new std::thread(&MainMenu::PlayBackgroundMusic, this); }
+						pMusicThread->detach();
+						_musicIsPlaying = true;
+						break;
+					}
+				}
+				if (pMusicThread == nullptr)
+				{
+					continue;
+				}
+				continue;
 			}
 			else if (counter == 2)
 			{
-				pCommands->GoToXY(10, 10);
-				pCommands->Color(12);
-				cout << "2. Back";
+				//pCommands->GoToXY(10, 10);
+				//pCommands->Color(12);
+				//cout << "2. Back";
 				pCommands->Color(7);
 				system("cls");
-				pMainMenu->StartMenu(pCommands, pArtwork, pMusicThread, pMainMenu);
+				pMainMenu->StartMenu(pCommands, pArtwork, pMusicThread, pMainMenu, _musicIsPlaying);
 			}
 			break;
 		}
@@ -182,4 +206,9 @@ void MainMenu::DisplayOptions(Commands* const pCommands, Artwork* const pArtwork
 			break;
 		}
 	}
+}
+void MainMenu::PlayBackgroundMusic()&
+{
+	wchar_t wstr[] = L"music.wav";
+	PlaySound(wstr, NULL, SND_ASYNC | SND_LOOP);
 }
