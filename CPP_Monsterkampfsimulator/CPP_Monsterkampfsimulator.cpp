@@ -50,6 +50,7 @@ MainMenu* pMainMenu;
 StringifierClass* pStringifierClass;
 Commands* pCommands;
 Artwork* pArtwork;
+std::thread* pMusicThread;
 #pragma endregion
 /// <summary>
 /// Collection of Pointern, which are check if nullptr,
@@ -61,23 +62,25 @@ static void Init()
 	checkNullPtr(pStringifierClass);
 	checkNullPtr(pCommands);
 	checkNullPtr(pArtwork);
+	checkNullPtr(pMusicThread);
 }
 #pragma endregion
 int main()
 {
 	Init();
-#pragma region background_tasks
-	//StartThreadedBackgroundMusic();
-#pragma endregion background_tasks
+
 #pragma region obj_creation
 	pMainMenu = new MainMenu();
 	pStringifierClass = new StringifierClass();
 	pCommands = new Commands();
 	pArtwork = new Artwork();
+	pMusicThread = new std::thread(playBackgroundMusic);
+
 #pragma endregion obj_creation
+
 #pragma region startMainLoop
-	// initilatation of objects for the game
-	pMainMenu->StartMenu(pCommands, pArtwork);
+	pMainMenu->StartMenu(pCommands, pArtwork, pMusicThread, pMainMenu);
+
 #pragma region TestingArea
 	Monster* pMonster1 = nullptr;
 	Monster* pMonster2 = nullptr;
@@ -98,6 +101,8 @@ int main()
 	setPointerNullDeleteObject(pMonster2);
 #pragma endregion TestingArea
 
+
+	setPointerNullDeleteObject(pMusicThread);
 	setPointerNullDeleteObject(pArtwork);
 	setPointerNullDeleteObject(pCommands);
 	setPointerNullDeleteObject(pStringifierClass);

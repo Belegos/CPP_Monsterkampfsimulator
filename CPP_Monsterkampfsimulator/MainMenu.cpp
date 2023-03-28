@@ -8,7 +8,7 @@ using namespace std;
 /// The "StartMenu" function displays a menu with three options and
 /// allows the user to navigate and select an option using arrow keys and the enter key. 
 /// </summary>
-void MainMenu::StartMenu(Commands* const pCommands, Artwork* const pArtwork)// const = read only Pointer, to prevent creating a new obj on the pointer while using 
+void MainMenu::StartMenu(Commands* const pCommands, Artwork* const pArtwork, std::thread* const pMusicThread, MainMenu* const pMainMenu)// const = read only Pointer, to prevent creating a new obj on the pointer while using 
 {
 	int Set[] = { 12,7,7,7 };	// 7 = white , 12 = red
 	int counter = 1;
@@ -70,7 +70,7 @@ void MainMenu::StartMenu(Commands* const pCommands, Artwork* const pArtwork)// c
 				pCommands->GoToXY(10, 22);
 				pCommands->ClearCurrentLine();
 				cout << "OPTIONS" << "\r" << endl;
-				DisplayOptions(pCommands, pArtwork);
+				DisplayOptions(pCommands, pArtwork, pMusicThread, pMainMenu);
 				break;
 			}
 			else if (counter == 3)
@@ -114,7 +114,7 @@ void MainMenu::StartMenu(Commands* const pCommands, Artwork* const pArtwork)// c
 	}
 }
 
-void MainMenu::DisplayOptions(Commands* const pCommands, Artwork* const pArtwork)
+void MainMenu::DisplayOptions(Commands* const pCommands, Artwork* const pArtwork, std::thread* const pMusicThread, MainMenu* const pMainMenu)
 {
 	int i = 1;
 	int counter = 1;
@@ -156,6 +156,7 @@ void MainMenu::DisplayOptions(Commands* const pCommands, Artwork* const pArtwork
 				pCommands->Color(12);
 				cout << "1. Sound";
 				pCommands->Color(7);
+
 			}
 			else if (counter == 2)
 			{
@@ -164,7 +165,7 @@ void MainMenu::DisplayOptions(Commands* const pCommands, Artwork* const pArtwork
 				cout << "2. Back";
 				pCommands->Color(7);
 				system("cls");
-				StartMenu(pCommands, pArtwork);
+				pMainMenu->StartMenu(pCommands, pArtwork, pMusicThread, pMainMenu);
 			}
 			break;
 		}
