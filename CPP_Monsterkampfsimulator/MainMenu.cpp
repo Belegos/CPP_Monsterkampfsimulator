@@ -182,10 +182,6 @@ void MainMenu::DisplayOptions(Commands* const pCommands, Artwork* const pArtwork
 						break;
 					}
 				}
-				//if (pMusicThread == nullptr)
-				//{
-				//	continue;
-				//}
 				continue;
 			}
 			else if (counter == 2)
