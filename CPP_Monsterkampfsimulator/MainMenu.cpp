@@ -68,7 +68,7 @@ void MainMenu::StartMenu(Commands* const pCommands, Artwork* const pArtwork, std
 				pCommands->GoToXY(10, 22);
 				pCommands->ClearCurrentLine();
 				cout << "START GAME" << "\r" << endl;
-				pHeroCreationMenu->StartHeroCreation(pHeroClass);
+				pHeroCreationMenu->StartHeroCreation(pHeroClass, pCommands);
 				break;
 			}
 			else if (counter == 2)
