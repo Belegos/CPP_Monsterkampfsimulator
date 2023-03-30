@@ -1,6 +1,6 @@
-﻿#include "Artwork.h"
-#include <iostream>
+﻿#include <iostream>
 #include <string>
+#include "Artwork.h"
 
 void Artwork::Title()
 {
@@ -31,6 +31,8 @@ void Artwork::Options() {
 }
 
 void Artwork::FrameWork()
+
+//TODO: HOW TO UNICODE INTO CODE :-(
 {
 	std::cout << R"(
  ┌──────────────────┬──────────────────┐

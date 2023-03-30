@@ -5,6 +5,18 @@
 #include "HeroCreationMenu.h"
 #include "HeroClass.h"
 
+void HeroCreationMenu::IncreaseAttribute(HeroClass* const pHeroClass) 
+{
+	if(key = 72 ) //up arrow key
+	{
+		//_attributeToIncrease++;
+	}
+}
+void HeroCreationMenu::DecreaseAttribute(HeroClass* const pHeroClass) 
+{
+	
+}
+
 void HeroCreationMenu::StartHeroCreation(HeroClass* const pHeroClass) 
 {
 	//menu with arrowkey input up and down for choosing attributes
@@ -13,8 +25,7 @@ void HeroCreationMenu::StartHeroCreation(HeroClass* const pHeroClass)
 	// Warning if attribute points are left, with confirmation and go back
 	// 6.th menu point to go back to main menu
 
-	int _maximumAttributes = 200;
-	int _attributePoints = 200;
+
 
 	int _heroHealth = pHeroClass->GetHealth()+1;//give all attributes at least 1 point
 	int _heroAttack = pHeroClass->GetAttack()+1;

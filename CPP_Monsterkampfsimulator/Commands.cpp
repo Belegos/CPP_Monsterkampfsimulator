@@ -51,3 +51,17 @@ void Commands::ClearCurrentLine()
 {
 	std::cout << "\x1b[2K";
 }
+
+//MultiThreading
+void Commands::playBackgroundMusic()
+{
+	const wchar_t wstr[] = L"music.wav";
+	PlaySound(wstr, NULL, SND_ASYNC | SND_LOOP);
+}
+
+void Commands::StartThreadedBackgroundMusic(bool* pMusicIsPlaying, std::thread* pMusicThread)&
+{
+	pMusicThread = new std::thread(&Commands::playBackgroundMusic,this);
+	*pMusicIsPlaying = true;
+	pMusicThread->detach();
+}

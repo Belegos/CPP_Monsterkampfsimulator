@@ -7,5 +7,8 @@ public:
 	void GoToXY(int x, int y);
 	void ClearLine(int y);
 	void ClearCurrentLine();
+	//MultiThreading
+	void playBackgroundMusic();
+	void StartThreadedBackgroundMusic(bool* pMusicIsPlaying,std::thread* pMusicThread)&;
 };
 

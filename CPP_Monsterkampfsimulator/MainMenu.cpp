@@ -167,8 +167,8 @@ void MainMenu::DisplayOptions(Commands* const pCommands, Artwork* const pArtwork
 					switch (*pMusicIsPlaying)
 					{
 					case true:
-						pMusicThread->join();
-						PlaySound(NULL, NULL, 0);
+						//pMusicThread->join();
+						pMusicThread ->~thread();  //PlaySound(NULL, NULL, 0);
 						*pMusicIsPlaying = false;
 						pCommands->GoToXY(20,9);
 						cout << " Off "<<endl;
@@ -176,8 +176,7 @@ void MainMenu::DisplayOptions(Commands* const pCommands, Artwork* const pArtwork
 					case false:
 						wchar_t wstr[] = L"music.wav";
 						if (pMusicThread != nullptr) { delete pMusicThread; pMusicThread = nullptr; };
-						if (pMusicThread == nullptr) { pMusicThread = new std::thread(&MainMenu::PlayBackgroundMusic, pMainMenu); }
-						//pMusicThread->detach();
+						if (pMusicThread == nullptr) { pCommands->StartThreadedBackgroundMusic(pMusicIsPlaying, pMusicThread); }//creating new thread and detach(called in method) it!
 						*pMusicIsPlaying = true;
 						pCommands->GoToXY(20, 9);
 						cout << "  ON" << endl;
@@ -207,9 +206,4 @@ void MainMenu::DisplayOptions(Commands* const pCommands, Artwork* const pArtwork
 			break;
 		}
 	}
-}
-void MainMenu::PlayBackgroundMusic()&
-{
-	wchar_t wstr[] = L"music.wav";
-	PlaySound(wstr, NULL, SND_ASYNC | SND_LOOP);
 }

@@ -6,49 +6,16 @@
 #include "Commands.h"
 #include "MainMenu.h"
 #include "Artwork.h"
-//put these using to other classes where used
 //#include "StringifierClass.h"
 #include "Monster.h"
 #include "MonsterFactory.h"
 #include "HeroClass.h"
 #include "HeroCreationMenu.h"
-//#include <SFML/Audio.hpp>
 #pragma comment(lib, "winmm.lib")
 
 using namespace std;
 
-#pragma region preMain()
-#pragma region Forward_Declaration
-
-bool _musicIsPlaying{ true };
-bool* pMusicIsPlaying{ nullptr };
-MainMenu* pMainMenu{ nullptr };
-//StringifierClass* pStringifierClass{ nullptr };
-Commands* pCommands{ nullptr };
-Artwork* pArtwork{ nullptr };
-std::thread* pMusicThread{ nullptr };
-HeroCreationMenu* pHeroCreationMenu{ nullptr };
-HeroClass* pHeroClass{ nullptr };
-
-
-#pragma endregion Forward_Declaration
-
-#pragma region MusicThreaded
-void playBackgroundMusic()
-{
-	wchar_t wstr[] = L"music.wav";
-	PlaySound(wstr, NULL, SND_ASYNC | SND_LOOP);
-}
-void StartThreadedBackgroundMusic()
-{
-	//threaded backgroundmusic with SFML library
-	std::thread musicThread(playBackgroundMusic);
-	*pMusicIsPlaying = true;
-	musicThread.detach();
-}
-#pragma endregion MusicThreaded
-
-#pragma region NullPtrCheck and Obj delete
+#pragma region templates
 template<typename T>
 void checkNullPtr(T*& pPointer)
 {
@@ -62,7 +29,19 @@ void setPointerNullDeleteObject(T*& pPointer)
 	if (pPointer != nullptr) { delete pPointer; };
 	pPointer = nullptr;
 }
-#pragma endregion
+#pragma endregion templates
+
+#pragma region Forward_Declaration
+bool _musicIsPlaying{ true };
+bool* pMusicIsPlaying{ nullptr };
+MainMenu* pMainMenu{ nullptr };
+//StringifierClass* pStringifierClass{ nullptr };
+Commands* pCommands{ nullptr };
+Artwork* pArtwork{ nullptr };
+std::thread* pMusicThread{ nullptr };
+HeroCreationMenu* pHeroCreationMenu{ nullptr };
+HeroClass* pHeroClass{ nullptr };
+#pragma endregion Forward_Declaration
 
 /// <summary>
 /// Collection of Pointern, which are check if nullptr,
@@ -79,22 +58,20 @@ static void Init()
 	checkNullPtr(pHeroClass);
 	checkNullPtr(pHeroCreationMenu);
 }
-#pragma endregion
+
 int main()
 {
 	Init();
 
-#pragma region obj_creation
 	pMainMenu = new MainMenu();
 	//pStringifierClass = new StringifierClass();
 	pCommands = new Commands();
 	pArtwork = new Artwork();
 	pMusicIsPlaying = new bool{true};
-	pMusicThread = new std::thread(StartThreadedBackgroundMusic);
 	pHeroClass = new HeroClass();
 	pHeroCreationMenu = new HeroCreationMenu();
+	pCommands->StartThreadedBackgroundMusic(pMusicIsPlaying, pMusicThread);
 
-#pragma endregion obj_creation
 
 #pragma region startMainLoop
 	pMainMenu->StartMenu(pCommands, pArtwork, pMusicThread, pMainMenu, pMusicIsPlaying, pHeroClass, pHeroCreationMenu);
@@ -132,6 +109,8 @@ int main()
 	setPointerNullDeleteObject(pMonster2);*/
 #pragma endregion TestingArea
 
+	setPointerNullDeleteObject(pHeroCreationMenu);
+	setPointerNullDeleteObject(pHeroClass);
 	setPointerNullDeleteObject(pMusicIsPlaying);
 	setPointerNullDeleteObject(pMusicThread);
 	setPointerNullDeleteObject(pArtwork);
@@ -143,18 +122,7 @@ int main()
 	return 0;
 }
 
-/*
-void playBackgroundMusic()
-{
-	sf::Music music;
-	if (!music.openFromFile("music.mp3"))
-	{
-		return;
-	}
-	music.setLoop(true);
-	music.play();
-}
-*/
+
 #pragma region Deckweiﬂ
 // int* pX = &X -> integer pointer names pX is set to the adress of X
 // int y = *pX -> integer y is set to the thing pointed to by pX
@@ -166,7 +134,7 @@ void playBackgroundMusic()
 // int* pNumber = new int; -> Pointer to a new integeradress
 // delete pNumber; -> free the adress of pNumber
 // pNumber = nullptr; -> free the adress of pNumber
-#pragma endregion
+#pragma endregion Deckweiﬂ
 
 //cout << obj1._monsterRace<< "\n"<< "Life:" << strings.HealthString(obj1.GetMaxHealth(), obj1.GetHealth()) << endl;
 //printf("Monster Health: %s", obj1.HealthDisplay());
