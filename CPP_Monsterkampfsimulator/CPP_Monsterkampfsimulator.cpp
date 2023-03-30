@@ -7,9 +7,11 @@
 #include "MainMenu.h"
 #include "Artwork.h"
 //put these using to other classes where used
-#include "StringifierClass.h"
+//#include "StringifierClass.h"
 #include "Monster.h"
 #include "MonsterFactory.h"
+#include "HeroClass.h"
+#include "HeroCreationMenu.h"
 //#include <SFML/Audio.hpp>
 #pragma comment(lib, "winmm.lib")
 
@@ -18,13 +20,16 @@ using namespace std;
 #pragma region preMain()
 #pragma region Forward_Declaration
 
-//bool _musicIsPlaying{ true };
-bool* pMusicIsPlaying; 
-MainMenu* pMainMenu;
-StringifierClass* pStringifierClass;
-Commands* pCommands;
-Artwork* pArtwork;
-std::thread* pMusicThread;
+bool _musicIsPlaying{ true };
+bool* pMusicIsPlaying{ nullptr };
+MainMenu* pMainMenu{ nullptr };
+//StringifierClass* pStringifierClass{ nullptr };
+Commands* pCommands{ nullptr };
+Artwork* pArtwork{ nullptr };
+std::thread* pMusicThread{ nullptr };
+HeroCreationMenu* pHeroCreationMenu{ nullptr };
+HeroClass* pHeroClass{ nullptr };
+
 
 #pragma endregion Forward_Declaration
 
@@ -67,10 +72,12 @@ static void Init()
 {
 	checkNullPtr(pMusicIsPlaying);
 	checkNullPtr(pMainMenu);
-	checkNullPtr(pStringifierClass);
+	//checkNullPtr(pStringifierClass);
 	checkNullPtr(pCommands);
 	checkNullPtr(pArtwork);
 	checkNullPtr(pMusicThread);
+	checkNullPtr(pHeroClass);
+	checkNullPtr(pHeroCreationMenu);
 }
 #pragma endregion
 int main()
@@ -79,19 +86,21 @@ int main()
 
 #pragma region obj_creation
 	pMainMenu = new MainMenu();
-	pStringifierClass = new StringifierClass();
+	//pStringifierClass = new StringifierClass();
 	pCommands = new Commands();
 	pArtwork = new Artwork();
 	pMusicIsPlaying = new bool{true};
 	pMusicThread = new std::thread(StartThreadedBackgroundMusic);
+	pHeroClass = new HeroClass();
+	pHeroCreationMenu = new HeroCreationMenu();
 
 #pragma endregion obj_creation
 
 #pragma region startMainLoop
-	pMainMenu->StartMenu(pCommands, pArtwork, pMusicThread, pMainMenu, pMusicIsPlaying);
+	pMainMenu->StartMenu(pCommands, pArtwork, pMusicThread, pMainMenu, pMusicIsPlaying, pHeroClass, pHeroCreationMenu);
 
 #pragma region TestingArea
-	Monster* pMonster1 = nullptr;
+	/*Monster* pMonster1 = nullptr;
 	Monster* pMonster2 = nullptr;
 
 	MonsterFactory* factory = new FactoryDragon();
@@ -102,19 +111,32 @@ int main()
 	checkNullPtr(pMonster2);
 	pMonster2 = factory->createMonster();
 
+	pArtwork->FrameWork();
+	pCommands->GoToXY(22,2);
 	cout << "Monster1: " << pMonster1->_monsterRace << endl;
+	pCommands->GoToXY(3,2);
 	cout << "Monster2: " << pMonster2->_monsterRace << endl;
+	cout << "" << endl;
+	cout << "" << endl;
+	cout << "" << endl;
+	cout << "" << endl;
+	cout << "" << endl;
+	cout << "" << endl;
+	cout << "" << endl;
+	cout << "" << endl;
+	cout << "" << endl;
+	cout << "" << endl;
 
 
 	setPointerNullDeleteObject(pMonster1);
-	setPointerNullDeleteObject(pMonster2);
+	setPointerNullDeleteObject(pMonster2);*/
 #pragma endregion TestingArea
 
-
+	setPointerNullDeleteObject(pMusicIsPlaying);
 	setPointerNullDeleteObject(pMusicThread);
 	setPointerNullDeleteObject(pArtwork);
 	setPointerNullDeleteObject(pCommands);
-	setPointerNullDeleteObject(pStringifierClass);
+	//setPointerNullDeleteObject(pStringifierClass);
 	setPointerNullDeleteObject(pMainMenu);
 #pragma endregion startMainLoop
 

@@ -1,4 +1,4 @@
-#include "Artwork.h"
+﻿#include "Artwork.h"
 #include <iostream>
 #include <string>
 
@@ -28,4 +28,17 @@ void Artwork::Options() {
 / /_/ / /_/ / /_/ / /_/ / / / (__  ) 
 \____/ .___/\__/_/\____/_/ /_/____/  
     /_/                              )" << std::endl;
+}
+
+void Artwork::FrameWork()
+{
+	std::cout << R"(
+ ┌──────────────────┬──────────────────┐
+ │                  │                  │
+ ├──────────────────┼──────────────────┤
+ │  Current Life    │  Enemy Life      │
+ ├──────────────────┼──────────────────┤
+ │                  │                  │
+ └──────────────────┴──────────────────┘
+)" << std::endl;
 }

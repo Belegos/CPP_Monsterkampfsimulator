@@ -161,6 +161,8 @@
     <ClCompile Include="Artwork.cpp" />
     <ClCompile Include="Commands.cpp" />
     <ClCompile Include="CPP_Monsterkampfsimulator.cpp" />
+    <ClCompile Include="HeroClass.cpp" />
+    <ClCompile Include="HeroCreationMenu.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="MonsterFactory.cpp" />
@@ -170,6 +172,8 @@
     <ClInclude Include="Artwork.h" />
     <ClInclude Include="Commands.h" />
     <ClInclude Include="CPP_Monsterkampfsimulator.h" />
+    <ClInclude Include="HeroClass.h" />
+    <ClInclude Include="HeroCreationMenu.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="MonsterFactory.h" />

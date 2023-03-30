@@ -13,7 +13,7 @@ using namespace std;
 /// The "StartMenu" function displays a menu with three options and
 /// allows the user to navigate and select an option using arrow keys and the enter key. 
 /// </summary>
-void MainMenu::StartMenu(Commands* const pCommands, Artwork* const pArtwork, std::thread* const pMusicThread, MainMenu* const pMainMenu, bool _musicIsPlaying)// const = read only Pointer, to prevent creating a new obj on the pointer while using 
+void MainMenu::StartMenu(Commands* const pCommands, Artwork* const pArtwork, std::thread* const pMusicThread, MainMenu* const pMainMenu, bool _musicIsPlaying, HeroClass* const pHeroClass, HeroCreationMenu* const pHeroCreationMenu)// const = read only Pointer, to prevent creating a new obj on the pointer while using 
 {
 	int Set[] = { 12,7,7,7 };	// 7 = white , 12 = red
 	int counter = 1;
@@ -67,7 +67,8 @@ void MainMenu::StartMenu(Commands* const pCommands, Artwork* const pArtwork, std
 				pCommands->GoToXY(10, 22);
 				pCommands->ClearCurrentLine();
 				cout << "START GAME" << "\r" << endl;
-				continue;
+				pHeroCreationMenu->StartHeroCreation(pHeroClass);
+				break;
 			}
 			else if (counter == 2)
 			{
@@ -75,7 +76,7 @@ void MainMenu::StartMenu(Commands* const pCommands, Artwork* const pArtwork, std
 				pCommands->GoToXY(10, 22);
 				pCommands->ClearCurrentLine();
 				cout << "OPTIONS" << "\r" << endl;
-				DisplayOptions(pCommands, pArtwork, pMusicThread, this, _musicIsPlaying);
+				DisplayOptions(pCommands, pArtwork, pMusicThread, this, _musicIsPlaying,pHeroClass, pHeroCreationMenu);
 				break;
 			}
 			else if (counter == 3)
@@ -83,7 +84,7 @@ void MainMenu::StartMenu(Commands* const pCommands, Artwork* const pArtwork, std
 				//help
 				pCommands->ClearLine(22);
 				pCommands->GoToXY(10, 22);
-				cout << "HELP" << "\r" << endl;
+				cout << "USE ARROW KEYS AND ENTER TO SELECT" << "\r" << endl;
 				continue;
 			}
 			else if (counter == 4)
@@ -119,7 +120,7 @@ void MainMenu::StartMenu(Commands* const pCommands, Artwork* const pArtwork, std
 	}
 }
 
-void MainMenu::DisplayOptions(Commands* const pCommands, Artwork* const pArtwork, std::thread* pMusicThread, MainMenu* const pMainMenu, bool pMusicIsPlaying)
+void MainMenu::DisplayOptions(Commands* const pCommands, Artwork* const pArtwork, std::thread* pMusicThread, MainMenu* const pMainMenu, bool pMusicIsPlaying, HeroClass* const pHeroClass, HeroCreationMenu* const pHeroCreationMenu)
 {
 	int i = 1;
 	int counter = 1;
@@ -188,7 +189,7 @@ void MainMenu::DisplayOptions(Commands* const pCommands, Artwork* const pArtwork
 			{
 				pCommands->Color(7);
 				system("cls");
-				pMainMenu->StartMenu(pCommands, pArtwork, pMusicThread, this, pMusicIsPlaying);
+				pMainMenu->StartMenu(pCommands, pArtwork, pMusicThread, this, pMusicIsPlaying, pHeroClass, pHeroCreationMenu);
 			}
 			break;
 		}

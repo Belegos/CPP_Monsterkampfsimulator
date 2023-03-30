@@ -57,6 +57,12 @@
     <ClCompile Include="Commands.cpp">
       <Filter>Source Files\Logic</Filter>
     </ClCompile>
+    <ClCompile Include="HeroClass.cpp">
+      <Filter>Source Files\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="HeroCreationMenu.cpp">
+      <Filter>Source Files\Logic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Artwork.h">
@@ -81,6 +87,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Commands.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HeroClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HeroCreationMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
