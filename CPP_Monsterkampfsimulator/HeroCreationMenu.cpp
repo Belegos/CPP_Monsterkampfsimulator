@@ -30,37 +30,44 @@ void HeroCreationMenu::increaseFunction(Commands* const pCommands, int index, in
 		pCommands->GoToXY(0, 9);
 		pCommands->Color(Set[0]);
 		std::cout << "Health: " << _heroAttributes[0] << std::endl;
-
+		pCommands->GoToXY(0, 10);
+		pCommands->Color(Set[1]);
 		std::cout << "Attack: " << _heroAttributes[1] << std::endl;
-		
+		pCommands->GoToXY(0,11);
+		pCommands->Color(Set[2]);
 		std::cout << "Defense: " << _heroAttributes[2] << std::endl;
-		
+		pCommands->GoToXY(0, 12);
+		pCommands->Color(Set[3]);
 		std::cout << "Speed: " << _heroAttributes[3] << std::endl;
 
 		m_input = _getch();
 
-		if (m_input == 72 && (counter >= 1 && counter <= 3))//arrowkey up
-		{
-			counter--;
-		}
-		if (m_input == 80 && (counter >= 2 && counter <= 4))//arrowkey down
+		if (m_input == 80 && (counter >= 1 && counter <= 3))//arrowkey down
 		{
 			counter++;
+			index++;
+		}
+		if (m_input == 72 && (counter >= 2 && counter <= 4))//arrowkey up
+		{
+			counter--;
+			index--;
 		}
 
 		if (m_input == 75)//arrowkey left
 		{
-			if (*m_currentAttriebutes[index] > m_minimumAttributes && _AttributePoints > 0)
+			if (_AttributePoints > 0)
 			{
-				(*m_currentAttriebutes[index])--;
-				_AttributePoints--;
+				m_currentAttriebutes[index]--;
+				_heroAttributes[index]--;
+				_AttributePoints++;
 			}
 		}
 		if (m_input == 77)//arrowkey right
 		{
-			if (_AttributePoints > 0 && (*m_currentAttriebutes[index]) < m_maximumAttributes)
+			if (_AttributePoints > 0)
 			{
-				(*m_currentAttriebutes[index])++;
+				m_currentAttriebutes[index]++;
+				_heroAttributes[index]++;
 				_AttributePoints--;
 			}
 		}
