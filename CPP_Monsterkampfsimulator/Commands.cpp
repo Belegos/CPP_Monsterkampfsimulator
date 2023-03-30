@@ -9,9 +9,10 @@
 using namespace std;
 
 /// <summary>
-/// The "Color" function changes the color of the console text
+/// The "Color" function changes the color of the console text.
+/// Int 7 for white and Int 12 for red, as example.
 /// </summary>
-/// <param name="color"></param>
+/// <param name="color">Color as an Int</param>
 void Commands::Color(int color)
 {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
@@ -19,8 +20,8 @@ void Commands::Color(int color)
 /// <summary>
 /// The "GoToXY" function sets the cursor position on the console
 /// </summary>
-/// <param name="x"></param>
-/// <param name="y"></param>
+/// <param name="x">X-Position in Console</param>
+/// <param name="y">Y-Position in Console</param>
 void Commands::GoToXY(int x, int y)
 {
 	COORD c;
@@ -67,8 +68,10 @@ void Commands::playBackgroundMusic()
 /// <summary>
 /// This C++ code defines a member function called "StartThreadedBackgroundMusic" within the class "Commands".
 /// The function takes in a boolean pointer "pMusicIsPlaying" and a pointer to a std::thread object "pMusicThread" as parameters.
-/// The purpose of this function is to start playing background music in a separate thread, and update the "pMusicIsPlaying" boolean flag to indicate that the music is now playing.
-/// A new std::thread object is created using the "playBackgroundMusic" member function of the "Commands" class, and the "pMusicIsPlaying" flag is set to true.
+/// The purpose of this function is to start playing background music in a separate thread, and update the 
+/// "pMusicIsPlaying" boolean flag to indicate that the music is now playing.
+/// A new std::thread object is created using the "playBackgroundMusic" member function of the "Commands" class, 
+/// and the "pMusicIsPlaying" flag is set to true.
 /// Finally, the newly created thread is detached from the main thread using the "detach" function.
 /// </summary>
 /// <param name="pMusicIsPlaying">A boolean pointer indicating whether the background music is playing or not.</param>
