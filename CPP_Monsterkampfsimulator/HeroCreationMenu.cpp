@@ -7,14 +7,31 @@
 
 void HeroCreationMenu::IncreaseAttribute(HeroClass* const pHeroClass) 
 {
-	if(key = 72 ) //up arrow key
+	//right arrow key
+	//increase attribute
+	//if attribute is 1, do nothing
+	if (1) //1 as placeholder
 	{
-		//_attributeToIncrease++;
+		//increase attribute
+	}
+	else
+	{
+		//do nothing
 	}
 }
 void HeroCreationMenu::DecreaseAttribute(HeroClass* const pHeroClass) 
 {
-	
+	//left arrow key
+	//decrease attribute
+	//if attribute is 1, do nothing
+	if (1)//1 as placeholder
+	{
+		//decrease attribute
+	}
+	else
+	{
+		//do nothing
+	}
 }
 
 void HeroCreationMenu::StartHeroCreation(HeroClass* const pHeroClass) 
@@ -25,12 +42,9 @@ void HeroCreationMenu::StartHeroCreation(HeroClass* const pHeroClass)
 	// Warning if attribute points are left, with confirmation and go back
 	// 6.th menu point to go back to main menu
 
-
-
 	int _heroHealth = pHeroClass->GetHealth()+1;//give all attributes at least 1 point
 	int _heroAttack = pHeroClass->GetAttack()+1;
 	int _heroDefense = pHeroClass->GetDefense()+1;
 	int _heroSpeed = pHeroClass->GetSpeed()+1;
-
 
 }
