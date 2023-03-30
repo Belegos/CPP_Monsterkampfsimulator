@@ -1,7 +1,9 @@
-#include "HeroCreationMenu.h"
-#include "HeroClass.h"
 #include <iostream>
 #include <string>
+#include <conio.h>
+#include <Windows.h>
+#include "HeroCreationMenu.h"
+#include "HeroClass.h"
 
 void HeroCreationMenu::StartHeroCreation(HeroClass* const pHeroClass) 
 {
@@ -14,8 +16,10 @@ void HeroCreationMenu::StartHeroCreation(HeroClass* const pHeroClass)
 	int _maximumAttributes = 200;
 	int _attributePoints = 200;
 
-	int _heroHealth = pHeroClass->GetHealth();
-	int _heroAttack = pHeroClass->GetAttack();
-	int _heroDefense = pHeroClass->GetDefense();
-	int _heroSpeed = pHeroClass->GetSpeed();
+	int _heroHealth = pHeroClass->GetHealth()+1;//give all attributes at least 1 point
+	int _heroAttack = pHeroClass->GetAttack()+1;
+	int _heroDefense = pHeroClass->GetDefense()+1;
+	int _heroSpeed = pHeroClass->GetSpeed()+1;
+
+
 }
