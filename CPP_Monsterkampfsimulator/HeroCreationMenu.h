@@ -5,7 +5,7 @@ class HeroCreationMenu
 public:
 	void StartHeroCreation(HeroClass* const pHeroClass);
 private:
-	void increaseFunction(int pFunc_mValue, int index, int m_maximumAttributes,
+	void increaseFunction(int index, int m_maximumAttributes,
 		int m_minimumAttributes, int* m_currentAttriebutes[], char m_input);
 	char key{}; //key input
 	int _maximumAttributes = 200; //maximum amount of attribute points
