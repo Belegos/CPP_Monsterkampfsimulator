@@ -53,13 +53,26 @@ void Commands::ClearCurrentLine()
 }
 
 //MultiThreading
+/// <summary>
+/// This C++ code defines a member function called "playBackgroundMusic" within the class "Commands".
+/// The function is responsible for playing a background music track. It uses the "PlaySound" function to play a sound file with the specified name in a separate thread.
+/// The sound file name is hardcoded as a wide character string, "music.wav". The function uses the flags "SND_ASYNC" and "SND_LOOP" to play the sound asynchronously and continuously in a loop, respectively.
+/// </summary>
 void Commands::playBackgroundMusic()
 {
 	const wchar_t wstr[] = L"music.wav";
 	PlaySound(wstr, NULL, SND_ASYNC | SND_LOOP);
 }
 
-
+/// <summary>
+/// This C++ code defines a member function called "StartThreadedBackgroundMusic" within the class "Commands".
+/// The function takes in a boolean pointer "pMusicIsPlaying" and a pointer to a std::thread object "pMusicThread" as parameters.
+/// The purpose of this function is to start playing background music in a separate thread, and update the "pMusicIsPlaying" boolean flag to indicate that the music is now playing.
+/// A new std::thread object is created using the "playBackgroundMusic" member function of the "Commands" class, and the "pMusicIsPlaying" flag is set to true.
+/// Finally, the newly created thread is detached from the main thread using the "detach" function.
+/// </summary>
+/// <param name="pMusicIsPlaying">A boolean pointer indicating whether the background music is playing or not.</param>
+/// <param name="pMusicThread">A pointer to a std::thread object used to play the background music in a separate thread.</param>
 void Commands::StartThreadedBackgroundMusic(bool* pMusicIsPlaying, std::thread*& pMusicThread)&
 {
 	pMusicThread = new std::thread(&Commands::playBackgroundMusic,this);
