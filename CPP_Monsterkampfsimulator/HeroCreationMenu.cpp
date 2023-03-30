@@ -5,11 +5,19 @@
 #include "HeroCreationMenu.h"
 #include "HeroClass.h"
 
-void HeroCreationMenu::increaseFunction(int pFunc_mValue, int index, int m_maximumAttributes,
+void HeroCreationMenu::increaseFunction(int index, int m_maximumAttributes,
     int m_minimumAttributes, int* m_currentAttriebutes[], char m_input)
 {
     while (_AttributePoints != 0)
     {
+        std::cout << "Attribute points: " << _AttributePoints << std::endl;
+        std::cout << "Health: " << _heroAttributes[0] << std::endl;
+        std::cout << "Attack: " << _heroAttributes[1] << std::endl;
+        std::cout << "Defense: " << _heroAttributes[2] << std::endl;
+        std::cout << "Speed: " << _heroAttributes[3] << std::endl;
+
+
+
         m_input = _getch();
 
         if (m_input == 72 && index > 0 && index < 4)//arrowkey up
@@ -50,5 +58,5 @@ void HeroCreationMenu::StartHeroCreation(HeroClass* const pHeroClass)
     int index{ 0 };
     int* pHeroAttributes[4] = { &_heroHealth, &_heroAttack, &_heroDefense, &_heroSpeed };
 
-    increaseFunction(1, index, _maximumAttributes, _minAttributes, pHeroAttributes, key);
+    increaseFunction(index, _maximumAttributes, _minAttributes, pHeroAttributes, key);
 }
