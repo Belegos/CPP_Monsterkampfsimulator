@@ -59,7 +59,8 @@ void Commands::playBackgroundMusic()
 	PlaySound(wstr, NULL, SND_ASYNC | SND_LOOP);
 }
 
-void Commands::StartThreadedBackgroundMusic(bool* pMusicIsPlaying, std::thread* pMusicThread)&
+
+void Commands::StartThreadedBackgroundMusic(bool* pMusicIsPlaying, std::thread*& pMusicThread)&
 {
 	pMusicThread = new std::thread(&Commands::playBackgroundMusic,this);
 	*pMusicIsPlaying = true;

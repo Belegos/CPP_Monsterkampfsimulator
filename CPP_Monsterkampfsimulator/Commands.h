@@ -9,6 +9,6 @@ public:
 	void ClearCurrentLine();
 	//MultiThreading
 	void playBackgroundMusic();
-	void StartThreadedBackgroundMusic(bool* pMusicIsPlaying,std::thread* pMusicThread)&;
+	void StartThreadedBackgroundMusic(bool* pMusicIsPlaying,std::thread*& pMusicThread)&;
 };
 

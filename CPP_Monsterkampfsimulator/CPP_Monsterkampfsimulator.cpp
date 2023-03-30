@@ -67,7 +67,7 @@ int main()
 	//pStringifierClass = new StringifierClass();
 	pCommands = new Commands();
 	pArtwork = new Artwork();
-	pMusicIsPlaying = new bool{true};
+	pMusicIsPlaying = new bool{ true };
 	pHeroClass = new HeroClass();
 	pHeroCreationMenu = new HeroCreationMenu();
 	pCommands->StartThreadedBackgroundMusic(pMusicIsPlaying, pMusicThread);

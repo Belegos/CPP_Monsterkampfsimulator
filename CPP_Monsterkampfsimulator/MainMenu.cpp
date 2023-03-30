@@ -168,7 +168,8 @@ void MainMenu::DisplayOptions(Commands* const pCommands, Artwork* const pArtwork
 					{
 					case true:
 						//pMusicThread->join();
-						pMusicThread ->~thread();  //PlaySound(NULL, NULL, 0);
+						PlaySound(NULL, NULL, 0);
+						pMusicThread ->~thread();  
 						*pMusicIsPlaying = false;
 						pCommands->GoToXY(20,9);
 						cout << " Off "<<endl;
