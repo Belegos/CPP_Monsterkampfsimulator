@@ -16,17 +16,12 @@
 using namespace std;
 
 #pragma region templates
-template<typename T>
-void checkNullPtr(T*& pPointer)
-{
-	if (pPointer != nullptr) { pPointer = nullptr; }
-	else {}
-}
+
+
 template<typename T>
 void setPointerNullDeleteObject(T*& pPointer)
 {
-	if (pPointer == nullptr) {};
-	if (pPointer != nullptr) { delete pPointer; };
+	delete pPointer;
 	pPointer = nullptr;
 }
 #pragma endregion templates
@@ -47,27 +42,16 @@ HeroClass* pHeroClass{ nullptr };
 /// Collection of Pointern, which are check if nullptr,
 ///  if not set to nullptr
 /// </summary>
-static void Init()
-{
-	checkNullPtr(pMusicIsPlaying);
-	checkNullPtr(pMainMenu);
-	//checkNullPtr(pStringifierClass);
-	checkNullPtr(pCommands);
-	checkNullPtr(pArtwork);
-	checkNullPtr(pMusicThread);
-	checkNullPtr(pHeroClass);
-	checkNullPtr(pHeroCreationMenu);
-}
+
 
 int main()
 {
-	Init();
 
 	pMainMenu = new MainMenu();
 	//pStringifierClass = new StringifierClass();
 	pCommands = new Commands();
 	pArtwork = new Artwork();
-	pMusicIsPlaying = new bool{ true };
+	pMusicIsPlaying = new bool{ true };//global settings are okay,use direct in stack
 	pHeroClass = new HeroClass();
 	pHeroCreationMenu = new HeroCreationMenu();
 	pCommands->StartThreadedBackgroundMusic(pMusicIsPlaying, pMusicThread);
