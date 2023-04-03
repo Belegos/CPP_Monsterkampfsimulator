@@ -33,7 +33,7 @@ void HeroCreationMenu::increaseFunction(Commands* const pCommands, int _selected
 		pCommands->GoToXY(0, 10);
 		pCommands->Color(Set[1]);
 		std::cout << "Attack: " << _heroAttributes[1] << std::endl;
-		pCommands->GoToXY(0,11);
+		pCommands->GoToXY(0, 11);
 		pCommands->Color(Set[2]);
 		std::cout << "Defense: " << _heroAttributes[2] << std::endl;
 		pCommands->GoToXY(0, 12);
@@ -56,7 +56,7 @@ void HeroCreationMenu::increaseFunction(Commands* const pCommands, int _selected
 
 		if (m_input == 75)//arrowkey left
 		{
-			if (_AttributePoints > 0)
+			if (_heroAttributes[_selectedHeroAttribute] > 0&& _AttributePoints < 130 )
 			{
 				m_currentAttributes[_selectedHeroAttribute]--;
 				_heroAttributes[_selectedHeroAttribute]--;
@@ -65,7 +65,7 @@ void HeroCreationMenu::increaseFunction(Commands* const pCommands, int _selected
 		}
 		if (m_input == 77)//arrowkey right
 		{
-			if (_AttributePoints > 0)
+			if (_heroAttributes[_selectedHeroAttribute]< _maxAttributes-3 && _AttributePoints>0)							//
 			{
 				m_currentAttributes[_selectedHeroAttribute]++;
 				_heroAttributes[_selectedHeroAttribute]++;
@@ -97,13 +97,13 @@ void HeroCreationMenu::increaseFunction(Commands* const pCommands, int _selected
 
 void HeroCreationMenu::StartHeroCreation(HeroClass* const pHeroClass, Commands* const pCommands)
 {
-	int _heroHealth = pHeroClass->ModifyHealth() + 1;
-	int _heroAttack = pHeroClass->GetAttack() + 1;
-	int _heroDefense = pHeroClass->GetDefense() + 1;
-	int _heroSpeed = pHeroClass->GetSpeed() + 1;
-	int _heroAttributes[] = { _heroHealth, _heroAttack, _heroDefense, _heroSpeed };
+	//int _heroHealth = pHeroClass->ModifyHealth(1);
+	//int _heroAttack = pHeroClass->ModifyAttack(1);
+	//int _heroDefense = pHeroClass->ModifyDefense(1);
+	//int _heroSpeed = pHeroClass->ModifySpeed(1);
+	int _heroAttributes[] = { pHeroClass->ModifyHealth(1), pHeroClass->ModifyAttack(1), pHeroClass->ModifyDefense(1), pHeroClass->ModifySpeed(1) };
 	int _selectedHeroAttribute{ 0 };
-	int* pHeroAttributes[] = { &_heroHealth, &_heroAttack, &_heroDefense, &_heroSpeed };
+	int* pHeroAttributes[] = { &_heroAttributes[1],&_heroAttributes[2],&_heroAttributes[3],&_heroAttributes[4] };
 
-	increaseFunction(pCommands, _selectedHeroAttribute, _maximumAttributes, _minAttributes, pHeroAttributes, key);
+	increaseFunction(pCommands, _selectedHeroAttribute, _maxAttributes, _minAttributes, pHeroAttributes, key);
 }

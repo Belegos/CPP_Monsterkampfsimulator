@@ -6,38 +6,42 @@ int HeroClass::ModifyHealth()
 	return _heroHealth;
 }
 
-void HeroClass::ModifyHealth(const int& _newHealth)
+int HeroClass::ModifyHealth(const int& _newHealth)
 {
 	_heroHealth = _newHealth;
+	return _heroHealth;
 }
 
-int HeroClass::GetAttack()
+int HeroClass::ModifyAttack()
 {
 	return _heroAttack;
 }
 
-void HeroClass::SetAttack(const int& _newAttack)
+int HeroClass::ModifyAttack(const int& _newAttack)
 {
 	_heroAttack = _newAttack;
+	return _heroAttack;
 }
 
-int HeroClass::GetDefense()
+int HeroClass::ModifyDefense()
 {
 	return _heroDefense;
 }
 
-void HeroClass::SetDefense(const int& _newDefense)
+int HeroClass::ModifyDefense(const int& _newDefense)
 {
 	_heroDefense = _newDefense;
+	return _heroDefense;
 }
 
-int HeroClass::GetSpeed()
+int HeroClass::ModifySpeed()
 {
 	return _heroSpeed;
 }
 
-void HeroClass::SetSpeed(const int& _newSpeed)
+int HeroClass::ModifySpeed(const int& _newSpeed)
 {
 	_heroSpeed = _newSpeed;
+	return _heroSpeed;
 }
 
