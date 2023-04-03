@@ -72,6 +72,13 @@ void HeroCreationMenu::increaseFunction(Commands* const pCommands, int _selected
 				_AttributePoints--;
 			}
 		}
+		if (m_input == 8)//backspace 
+		{
+			//TODO: go back to MainMenu
+			//TODO: create class to store important pointer for menu obj and other important global var's.
+			break;
+			//pMainMenu->StartMenu(pCommands, pArtwork, pMusicThread, pMainMenu, pMusicIsPlaying, pHeroClass, pHeroCreationMenu);
+		}
 		if (m_input == 13)
 		{
 			if (_AttributePoints >= 1)
