@@ -5,11 +5,11 @@
 #include "HeroCreationMenu.h"
 #include "HeroClass.h"
 
-void HeroCreationMenu::increaseFunction(Commands* const pCommands, int index, int m_maximumAttributes,
-	int m_minimumAttributes, int* m_currentAttriebutes[], char m_input)
+void HeroCreationMenu::increaseFunction(Commands* const pCommands, int _selectedHeroAttribute, int m_maximumAttributes,
+	int m_minimumAttributes, int* m_currentAttributes[], char m_input)
 {
 	int Set[] = { 12,7,7,7 };	// 7 = white , 12 = red
-	int counter = 1;
+	int _menuPoint = 1;
 	system("cls");
 	for (int i = 1;;)
 	{
@@ -39,26 +39,27 @@ void HeroCreationMenu::increaseFunction(Commands* const pCommands, int index, in
 		pCommands->GoToXY(0, 12);
 		pCommands->Color(Set[3]);
 		std::cout << "Speed: " << _heroAttributes[3] << std::endl;
+		pCommands->Color(Set[1]);
 
 		m_input = _getch();
 
-		if (m_input == 80 && (counter >= 1 && counter <= 3))//arrowkey down
+		if (m_input == 80 && (_menuPoint >= 1 && _menuPoint <= 3))//arrowkey down
 		{
-			counter++;
-			index++;
+			_menuPoint++;
+			_selectedHeroAttribute++;
 		}
-		if (m_input == 72 && (counter >= 2 && counter <= 4))//arrowkey up
+		if (m_input == 72 && (_menuPoint >= 2 && _menuPoint <= 4))//arrowkey up
 		{
-			counter--;
-			index--;
+			_menuPoint--;
+			_selectedHeroAttribute--;
 		}
 
 		if (m_input == 75)//arrowkey left
 		{
 			if (_AttributePoints > 0)
 			{
-				m_currentAttriebutes[index]--;
-				_heroAttributes[index]--;
+				m_currentAttributes[_selectedHeroAttribute]--;
+				_heroAttributes[_selectedHeroAttribute]--;
 				_AttributePoints++;
 			}
 		}
@@ -66,8 +67,8 @@ void HeroCreationMenu::increaseFunction(Commands* const pCommands, int index, in
 		{
 			if (_AttributePoints > 0)
 			{
-				m_currentAttriebutes[index]++;
-				_heroAttributes[index]++;
+				m_currentAttributes[_selectedHeroAttribute]++;
+				_heroAttributes[_selectedHeroAttribute]++;
 				_AttributePoints--;
 			}
 		}
@@ -76,7 +77,7 @@ void HeroCreationMenu::increaseFunction(Commands* const pCommands, int index, in
 		Set[2] = 7;
 		Set[3] = 7;
 
-		switch (counter)
+		switch (_menuPoint)
 		{
 		case 1:
 			Set[0] = 12; //color.red
@@ -96,13 +97,13 @@ void HeroCreationMenu::increaseFunction(Commands* const pCommands, int index, in
 
 void HeroCreationMenu::StartHeroCreation(HeroClass* const pHeroClass, Commands* const pCommands)
 {
-	int _heroHealth = pHeroClass->GetHealth() + 1;
+	int _heroHealth = pHeroClass->ModifyHealth() + 1;
 	int _heroAttack = pHeroClass->GetAttack() + 1;
 	int _heroDefense = pHeroClass->GetDefense() + 1;
 	int _heroSpeed = pHeroClass->GetSpeed() + 1;
-	int _heroAttributes[4] = { _heroHealth, _heroAttack, _heroDefense, _heroSpeed };
-	int index{ 0 };
-	int* pHeroAttributes[4] = { &_heroHealth, &_heroAttack, &_heroDefense, &_heroSpeed };
+	int _heroAttributes[] = { _heroHealth, _heroAttack, _heroDefense, _heroSpeed };
+	int _selectedHeroAttribute{ 0 };
+	int* pHeroAttributes[] = { &_heroHealth, &_heroAttack, &_heroDefense, &_heroSpeed };
 
-	increaseFunction(pCommands, index, _maximumAttributes, _minAttributes, pHeroAttributes, key);
+	increaseFunction(pCommands, _selectedHeroAttribute, _maximumAttributes, _minAttributes, pHeroAttributes, key);
 }
