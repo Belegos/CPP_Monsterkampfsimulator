@@ -1,9 +1,9 @@
 #pragma once
 class HeroClass
 {
-	public:
-	int GetHealth();
-	void SetHealth(const int& _newHealth);
+public:
+	int ModifyHealth();
+	void ModifyHealth(const int& _newHealth);
 	int GetAttack();
 	void SetAttack(const int& _newAttack);
 	int GetDefense();

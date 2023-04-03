@@ -1,12 +1,12 @@
 #include "HeroClass.h"
 #include <iostream>
 
-int HeroClass::GetHealth()
+int HeroClass::ModifyHealth()
 {
 	return _heroHealth;
 }
 
-void HeroClass::SetHealth(const int& _newHealth)
+void HeroClass::ModifyHealth(const int& _newHealth)
 {
 	_heroHealth = _newHealth;
 }
