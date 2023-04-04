@@ -1,18 +1,11 @@
 #pragma once
-#include <thread>
-#include "Commands.h"
-#include "Artwork.h"
-#include "HeroClass.h"
-#include "HeroCreationMenu.h"
+#include "GlobalParameters.h"
+
 class MainMenu
 {
 public:
-	void StartMenu(Commands* const pCommands, Artwork* const pArtwork, 
-		std::thread* pMusicThread, MainMenu* const pMainMenu,bool* pMusicIsPlaying,
-		HeroClass* const pHeroClass, HeroCreationMenu* const pHeroCreationMenu);
+	void StartMenu(GlobalParameters* pGlobalParameters);
 private:
-	void DisplayOptions(Commands* const pCommands, Artwork* const pArtwork, 
-		std::thread* pMusicThread, MainMenu* const pMainMenu, bool* pMusicIsPlaying, 
-		HeroClass* const pHeroClass, HeroCreationMenu* const pHeroCreationMenu);
+	void DisplayOptions(GlobalParameters* pGlobalParameters);
 };
 

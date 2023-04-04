@@ -92,7 +92,7 @@ void HeroCreationMenu::increaseFunction(Commands* const pCommands, int _selected
 				pCommands->Color(Set[4]);
 				_errorDisplayed = true;
 			}
-			if (/*_AttributePoints <= 0 && */_heroAttributes[0] == 0 || _heroAttributes[1] == 0 || _heroAttributes[2] == 0 || _heroAttributes[3] == 0)
+			if (_heroAttributes[0] == 0 || _heroAttributes[1] == 0 || _heroAttributes[2] == 0 || _heroAttributes[3] == 0)
 			{
 				pCommands->GoToXY(0, 15);
 				pCommands->Color(Set[5]);

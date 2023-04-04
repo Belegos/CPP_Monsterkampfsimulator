@@ -1,18 +1,7 @@
 #pragma once
 #include <iostream>
-#include <Windows.h>
-#include <mmsystem.h>
-#include <thread>
-#include "Commands.h"
-#include "MainMenu.h"
-#include "Artwork.h"
-//#include "StringifierClass.h"
-#include "Monster.h"
-#include "MonsterFactory.h"
-#include "HeroClass.h"
-#include "HeroCreationMenu.h"
-#pragma comment(lib, "winmm.lib")
-
+#include <memory>
+#include "GlobalParameters.h"
 using namespace std;
 
 #pragma region templates
@@ -31,50 +20,18 @@ void setPointerNullDeleteObject(T*& pPointer)
 }
 #pragma endregion templates
 
-#pragma region Forward_Declaration
-bool _musicIsPlaying{ true };
-bool* pMusicIsPlaying{ nullptr };
-MainMenu* pMainMenu{ nullptr };
-//StringifierClass* pStringifierClass{ nullptr };
-Commands* pCommands{ nullptr };
-Artwork* pArtwork{ nullptr };
-std::thread* pMusicThread{ nullptr };
-HeroCreationMenu* pHeroCreationMenu{ nullptr };
-HeroClass* pHeroClass{ nullptr };
-#pragma endregion Forward_Declaration
-
-/// <summary>
-/// Collection of Pointern, which are check if nullptr,
-///  if not set to nullptr
-/// </summary>
-static void Init()
-{
-	checkNullPtr(pMusicIsPlaying);
-	checkNullPtr(pMainMenu);
-	//checkNullPtr(pStringifierClass);
-	checkNullPtr(pCommands);
-	checkNullPtr(pArtwork);
-	checkNullPtr(pMusicThread);
-	checkNullPtr(pHeroClass);
-	checkNullPtr(pHeroCreationMenu);
-}
-
 int main()
 {
-	Init();
-
-	pMainMenu = new MainMenu();
-	//pStringifierClass = new StringifierClass();
-	pCommands = new Commands();
-	pArtwork = new Artwork();
-	pMusicIsPlaying = new bool{ true };
-	pHeroClass = new HeroClass();
-	pHeroCreationMenu = new HeroCreationMenu();
-	pCommands->StartThreadedBackgroundMusic(pMusicIsPlaying, pMusicThread);
-
-
-#pragma region startMainLoop
-	pMainMenu->StartMenu(pCommands, pArtwork, pMusicThread, pMainMenu, pMusicIsPlaying, pHeroClass, pHeroCreationMenu);
+	GlobalParameters* pGlobalParameters{ nullptr };
+	//std::shared_ptr<GlobalParameters> pGlobalParameters = std::make_shared<GlobalParameters>();
+	pGlobalParameters = new GlobalParameters();
+	pGlobalParameters->pArtwork = new Artwork();
+	pGlobalParameters->pCommands = new Commands();
+	pGlobalParameters->pMainMenu = new MainMenu();
+	pGlobalParameters->pMusicIsPlaying = new bool{ true };
+	pGlobalParameters->pHeroClass = new HeroClass();
+	pGlobalParameters->pHeroCreationMenu = new HeroCreationMenu();
+	pGlobalParameters->pMainMenu->StartMenu(pGlobalParameters);
 
 #pragma region TestingArea
 	/*Monster* pMonster1 = nullptr;
@@ -109,15 +66,15 @@ int main()
 	setPointerNullDeleteObject(pMonster2);*/
 #pragma endregion TestingArea
 
-	setPointerNullDeleteObject(pHeroCreationMenu);
-	setPointerNullDeleteObject(pHeroClass);
-	setPointerNullDeleteObject(pMusicIsPlaying);
-	setPointerNullDeleteObject(pMusicThread);
-	setPointerNullDeleteObject(pArtwork);
-	setPointerNullDeleteObject(pCommands);
-	//setPointerNullDeleteObject(pStringifierClass);
-	setPointerNullDeleteObject(pMainMenu);
-#pragma endregion startMainLoop
+	//setPointerNullDeleteObject(pHeroCreationMenu);
+	//setPointerNullDeleteObject(pHeroClass);
+	//setPointerNullDeleteObject(pMusicIsPlaying);
+	//setPointerNullDeleteObject(pMusicThread);
+	//setPointerNullDeleteObject(pArtwork);
+	//setPointerNullDeleteObject(pCommands);
+	////setPointerNullDeleteObject(pStringifierClass);
+	//setPointerNullDeleteObject(pMainMenu);
+
 
 	return 0;
 }
