@@ -5,7 +5,6 @@
 
 void GlobalParameters::InitGlobalParameters(std::thread* pMusicThread)
 {
-	//pMainMenu = std::make_shared<MainMenu>();
 	pCommands = std::make_shared<Commands>();
 	pArtwork = std::make_shared<Artwork>();
 	pMusicIsPlaying = std::make_shared<bool>(true);

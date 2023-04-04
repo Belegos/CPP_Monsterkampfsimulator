@@ -19,12 +19,5 @@ public:
 	MainMenu* pMainMenu;
 	std::shared_ptr<HeroClass> pHeroClass{ nullptr };
 	std::shared_ptr<HeroCreationMenu> pHeroCreationMenu{ nullptr };
-
-	//Artwork* pArtwork{ nullptr };
-	//Commands* pCommands{ nullptr };
-	//bool* pMusicIsPlaying{ nullptr };
-	//std::thread* pMusicThread{ nullptr };
-	//HeroClass* pHeroClass{ nullptr };
-	//HeroCreationMenu* pHeroCreationMenu{ nullptr };
 	void InitGlobalParameters(std::thread* pMusicThread);
 };
