@@ -9,14 +9,6 @@
 #pragma comment(lib, "winmm.lib")
 using namespace std;
 
-//#define pCommands pGlobalParameters->pCommands
-//#define pArtwork pGlobalParameters->pArtwork
-//#define pMusicThread pGlobalParameters->pMusicThread
-//#define pMainMenu pGlobalParameters->pMainMenu
-//#define pMusicIsPlaying pGlobalParameters->pMusicIsPlaying
-//#define pHeroClass pGlobalParameters->pHeroClass
-//#define pHeroCreationMenu pGlobalParameters->pHeroCreationMenu
-
 void MainMenu::StartMenu(GlobalParameters* pGlobalParameters)
 {
 	int Set[] = { 12,7,7,7 };	// 7 = white , 12 = red
