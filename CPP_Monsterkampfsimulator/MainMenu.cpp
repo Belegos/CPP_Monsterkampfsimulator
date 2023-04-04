@@ -2,45 +2,45 @@
 #include <iostream>
 #include <conio.h>
 #include <cstdlib>
-//#include <thread>
+#include <thread>
 #include <Windows.h>
-//#include <mmsystem.h>
+#include <mmsystem.h>
 #include "MainMenu.h"
 #pragma comment(lib, "winmm.lib")
 using namespace std;
 
-void MainMenu::StartMenu(GlobalParameters* pGlobalParameters)
+void MainMenu::StartMenu(GlobalParameters pGlobalParameters, std::thread* pMusicThread)
 {
 	int Set[] = { 12,7,7,7 };	// 7 = white , 12 = red
 	int _menuPoint = 1;
 	
-	pGlobalParameters->pArtwork->Title();
+	pGlobalParameters.pArtwork->Title();
 	for (int i = 1;;)
 	{
 		
-		pGlobalParameters->pCommands->GoToXY(0, 0);
-		pGlobalParameters->pCommands->GoToXY(10, 18);//set cursor position
-		pGlobalParameters->pCommands->Color(Set[0]);
+		pGlobalParameters.pCommands->GoToXY(0, 0);
+		pGlobalParameters.pCommands->GoToXY(10, 18);//set cursor position
+		pGlobalParameters.pCommands->Color(Set[0]);
 		cout << "1. Start Game";
 
-		pGlobalParameters->pCommands->GoToXY(10, 19);
-		pGlobalParameters->pCommands->Color(Set[1]);
+		pGlobalParameters.pCommands->GoToXY(10, 19);
+		pGlobalParameters.pCommands->Color(Set[1]);
 		cout << "2. Options";
 
-		pGlobalParameters->pCommands->GoToXY(10, 20);
-		pGlobalParameters->pCommands->Color(Set[2]);
+		pGlobalParameters.pCommands->GoToXY(10, 20);
+		pGlobalParameters.pCommands->Color(Set[2]);
 		cout << "3. Help";
 
-		pGlobalParameters->pCommands->GoToXY(10, 21);
-		pGlobalParameters->pCommands->Color(Set[3]);
+		pGlobalParameters.pCommands->GoToXY(10, 21);
+		pGlobalParameters.pCommands->Color(Set[3]);
 		cout << "4. Exit";
-		pGlobalParameters->pCommands->Color(7);
+		pGlobalParameters.pCommands->Color(7);
 
-		pGlobalParameters->pCommands->GoToXY(10, 23);
-		pGlobalParameters->pCommands->Color(7);
+		pGlobalParameters.pCommands->GoToXY(10, 23);
+		pGlobalParameters.pCommands->Color(7);
 		cout << "Use the arrow keys to navigate and";
 
-		pGlobalParameters->pCommands->GoToXY(10, 24);
+		pGlobalParameters.pCommands->GoToXY(10, 24);
 		cout << "the enter key to select an option." << endl;
 
 
@@ -59,33 +59,33 @@ void MainMenu::StartMenu(GlobalParameters* pGlobalParameters)
 			if (_menuPoint == 1)
 			{
 				//start game
-				pGlobalParameters->pCommands->GoToXY(10, 22);
-				pGlobalParameters->pCommands->ClearCurrentLine();
+				pGlobalParameters.pCommands->GoToXY(10, 22);
+				pGlobalParameters.pCommands->ClearCurrentLine();
 				cout << "START GAME" << "\r" << endl;
-				pGlobalParameters->pHeroCreationMenu->StartHeroCreation(pGlobalParameters->pHeroClass, pGlobalParameters->pCommands);
+				//pGlobalParameters.pHeroCreationMenu->StartHeroCreation(pGlobalParameters);
 				break;
 			}
 			else if (_menuPoint == 2)
 			{
 				//help
-				pGlobalParameters->pCommands->GoToXY(10, 22);
-				pGlobalParameters->pCommands->ClearCurrentLine();
+				pGlobalParameters.pCommands->GoToXY(10, 22);
+				pGlobalParameters.pCommands->ClearCurrentLine();
 				cout << "OPTIONS" << "\r" << endl;
-				DisplayOptions(pGlobalParameters);
+				DisplayOptions(pGlobalParameters, pMusicThread);
 				break;
 			}
 			else if (_menuPoint == 3)
 			{
 				//help
-				pGlobalParameters->pCommands->ClearLine(22);
-				pGlobalParameters->pCommands->GoToXY(10, 22);
+				pGlobalParameters.pCommands->ClearLine(22);
+				pGlobalParameters.pCommands->GoToXY(10, 22);
 				cout << "USE ARROW KEYS AND ENTER TO SELECT" << "\r" << endl;
 				continue;
 			}
 			else if (_menuPoint == 4)
 			{
-				pGlobalParameters->pCommands->ClearLine(22);
-				pGlobalParameters->pCommands->GoToXY(10, 22);
+				pGlobalParameters.pCommands->ClearLine(22);
+				pGlobalParameters.pCommands->GoToXY(10, 22);
 				cout << "EXIT" << "\r" << endl;
 				exit(0);
 			}
@@ -115,7 +115,7 @@ void MainMenu::StartMenu(GlobalParameters* pGlobalParameters)
 	}
 }
 
-void MainMenu::DisplayOptions(GlobalParameters* pGlobalParameters)
+void MainMenu::DisplayOptions(GlobalParameters pGlobalParameters, std::thread* pMusicThread)
 {
 	int i = 1;
 	int counter = 1;
@@ -123,21 +123,21 @@ void MainMenu::DisplayOptions(GlobalParameters* pGlobalParameters)
 	char key;
 
 	system("cls");
-	pGlobalParameters->pCommands->GoToXY(0,0);
-	pGlobalParameters->pArtwork->Options();
-	pGlobalParameters->pCommands->GoToXY(10, 7);//set cursor position
-	pGlobalParameters->pCommands->Color(Set[1]);
+	pGlobalParameters.pCommands->GoToXY(0,0);
+	pGlobalParameters.pArtwork->Options();
+	pGlobalParameters.pCommands->GoToXY(10, 7);//set cursor position
+	pGlobalParameters.pCommands->Color(Set[1]);
 	cout << "Options";
 
 	for (i = 1;;)
 	{
 
-		pGlobalParameters->pCommands->GoToXY(10, 9);
-		pGlobalParameters->pCommands->Color(Set[0]);
+		pGlobalParameters.pCommands->GoToXY(10, 9);
+		pGlobalParameters.pCommands->Color(Set[0]);
 		cout << "1. Sound";
 
-		pGlobalParameters->pCommands->GoToXY(10, 10);
-		pGlobalParameters->pCommands->Color(Set[1]);
+		pGlobalParameters.pCommands->GoToXY(10, 10);
+		pGlobalParameters.pCommands->Color(Set[1]);
 		cout << "2. Back";
 
 
@@ -156,23 +156,23 @@ void MainMenu::DisplayOptions(GlobalParameters* pGlobalParameters)
 		{
 			if (counter == 1 && key == 13)
 			{
-				if (pGlobalParameters->pMusicThread != nullptr)
+				if (pMusicThread != nullptr)
 				{
-					switch (*pGlobalParameters->pMusicIsPlaying)
+					switch (*pGlobalParameters.pMusicIsPlaying)
 					{
 					case true:
 						PlaySound(NULL, NULL, 0);
-						pGlobalParameters->pMusicThread ->~thread();
-						*pGlobalParameters->pMusicIsPlaying = false;
-						pGlobalParameters->pCommands->GoToXY(20,9);
+						pMusicThread ->~thread();
+						*pGlobalParameters.pMusicIsPlaying = false;
+						pGlobalParameters.pCommands->GoToXY(20,9);
 						cout << " Off "<<endl;
 						break;
 					case false:
 						wchar_t wstr[] = L"music.wav";
-						if (pGlobalParameters->pMusicThread != nullptr) { delete pGlobalParameters->pMusicThread; pGlobalParameters->pMusicThread = nullptr; };
-						if (pGlobalParameters->pMusicThread == nullptr) { pGlobalParameters->pCommands->StartThreadedBackgroundMusic(pGlobalParameters->pMusicIsPlaying, pGlobalParameters->pMusicThread); }//creating new thread and detach(called in method) it!
-						*pGlobalParameters->pMusicIsPlaying = true;
-						pGlobalParameters->pCommands->GoToXY(20, 9);
+						if (pMusicThread != nullptr) { delete &pMusicThread; pMusicThread = nullptr; };
+						if (pMusicThread == nullptr) { pGlobalParameters.pCommands->StartThreadedBackgroundMusic(&*pGlobalParameters.pMusicIsPlaying, pMusicThread); }//creating new thread and detach(called in method) it!
+						*pGlobalParameters.pMusicIsPlaying = true;
+						pGlobalParameters.pCommands->GoToXY(20, 9);
 						cout << "  ON" << endl;
 						break;
 					}
@@ -181,9 +181,10 @@ void MainMenu::DisplayOptions(GlobalParameters* pGlobalParameters)
 			}
 			else if (counter == 2)
 			{
-				pGlobalParameters->pCommands->Color(7);
+				pGlobalParameters.pCommands->Color(7);
 				system("cls");
-				pGlobalParameters->pMainMenu->StartMenu(pGlobalParameters);
+				this->DisplayOptions(pGlobalParameters, pMusicThread);
+				//pGlobalParameters.pMainMenu->StartMenu(this.pGlobalParameters);
 			}
 			break;
 		}

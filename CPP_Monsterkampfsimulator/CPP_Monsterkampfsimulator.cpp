@@ -22,16 +22,13 @@ void setPointerNullDeleteObject(T*& pPointer)
 
 int main()
 {
-	GlobalParameters* pGlobalParameters{ nullptr };
+	std::thread* pMusicThread{ nullptr };
+
+	//GlobalParameters* pGlobalParameters{ nullptr };
 	//std::shared_ptr<GlobalParameters> pGlobalParameters = std::make_shared<GlobalParameters>();
-	pGlobalParameters = new GlobalParameters();
-	pGlobalParameters->pArtwork = new Artwork();
-	pGlobalParameters->pCommands = new Commands();
-	pGlobalParameters->pMainMenu = new MainMenu();
-	pGlobalParameters->pMusicIsPlaying = new bool{ true };
-	pGlobalParameters->pHeroClass = new HeroClass();
-	pGlobalParameters->pHeroCreationMenu = new HeroCreationMenu();
-	pGlobalParameters->pMainMenu->StartMenu(pGlobalParameters);
+	GlobalParameters pGlobalParameters = GlobalParameters();
+    pGlobalParameters.InitGlobalParameters(pMusicThread);
+	pGlobalParameters.pMainMenu->StartMenu(pGlobalParameters, pMusicThread);
 
 #pragma region TestingArea
 	/*Monster* pMonster1 = nullptr;
