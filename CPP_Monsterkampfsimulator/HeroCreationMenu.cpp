@@ -83,6 +83,7 @@ void HeroCreationMenu::increaseFunction(Commands* const pCommands, int _selected
 		{
 			if (_AttributePoints >= 1)
 			{
+				//Displays error message, if not all attributes are spent
 				pCommands->ClearLine(15);
 				pCommands->ClearLine(16);
 				pCommands->GoToXY(0, 17);
@@ -92,8 +93,9 @@ void HeroCreationMenu::increaseFunction(Commands* const pCommands, int _selected
 				pCommands->Color(Set[4]);
 				_errorDisplayed = true;
 			}
-			if (/*_AttributePoints <= 0 && */_heroAttributes[0] == 0 || _heroAttributes[1] == 0 || _heroAttributes[2] == 0 || _heroAttributes[3] == 0)
+			if (_heroAttributes[0] == 0 || _heroAttributes[1] == 0 || _heroAttributes[2] == 0 || _heroAttributes[3] == 0)
 			{
+				//Displays error message, if not all attributes are at least 1
 				pCommands->GoToXY(0, 15);
 				pCommands->Color(Set[5]);
 				std::cout << "All attributes should have at least the value 1" << std::endl;
