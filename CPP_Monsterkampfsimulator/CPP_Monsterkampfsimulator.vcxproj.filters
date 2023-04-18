@@ -34,51 +34,60 @@
     <Filter Include="Resource Files\Visuall\VisuallLogic">
       <UniqueIdentifier>{c6413e0d-262b-4cce-8c57-f3309f6d49ab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Logic\Menus">
+      <UniqueIdentifier>{43a4aeac-ab2f-4364-929a-caf194cb6f1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Logic\Gameplay">
+      <UniqueIdentifier>{c75bd58f-a1e6-4e63-850e-e7726b3aa8df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Logic\HelperClasses">
+      <UniqueIdentifier>{0ae0b0df-cf42-4b2c-900c-652cdbf4f399}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Menus">
+      <UniqueIdentifier>{a50d3577-36cd-4ac0-b6d7-b94f5cd2dcd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Gameplay">
+      <UniqueIdentifier>{3e5123bb-1efe-45e3-96d7-98c65f61260b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\HelperClasses">
+      <UniqueIdentifier>{9167defa-7f49-4063-b2db-85378ca36e68}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Artwork.cpp">
       <Filter>Resource Files\Visuall\VisuallLogic</Filter>
     </ClCompile>
-    <ClCompile Include="MainMenu.cpp">
-      <Filter>Source Files\Logic</Filter>
-    </ClCompile>
-    <ClCompile Include="Monster.cpp">
-      <Filter>Source Files\Logic</Filter>
-    </ClCompile>
-    <ClCompile Include="StringifierClass.cpp">
-      <Filter>Source Files\Logic</Filter>
-    </ClCompile>
-    <ClCompile Include="MonsterFactory.cpp">
-      <Filter>Source Files\Logic</Filter>
-    </ClCompile>
     <ClCompile Include="CPP_Monsterkampfsimulator.cpp">
       <Filter>Core\Logic</Filter>
     </ClCompile>
+    <ClCompile Include="HeroCreationMenu.cpp">
+      <Filter>Source Files\Logic\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Source Files\Logic\Menus</Filter>
+    </ClCompile>
     <ClCompile Include="Commands.cpp">
-      <Filter>Source Files\Logic</Filter>
+      <Filter>Source Files\Logic\HelperClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="MonsterFactory.cpp">
+      <Filter>Source Files\Logic\HelperClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="StringifierClass.cpp">
+      <Filter>Source Files\Logic\HelperClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="FightingClass.cpp">
+      <Filter>Source Files\Logic\Gameplay</Filter>
     </ClCompile>
     <ClCompile Include="HeroClass.cpp">
-      <Filter>Source Files\Logic</Filter>
+      <Filter>Source Files\Logic\Gameplay</Filter>
     </ClCompile>
-    <ClCompile Include="HeroCreationMenu.cpp">
-      <Filter>Source Files\Logic</Filter>
+    <ClCompile Include="Monster.cpp">
+      <Filter>Source Files\Logic\Gameplay</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Artwork.h">
       <Filter>Resource Files\Visuall\VisuallHeader</Filter>
-    </ClInclude>
-    <ClInclude Include="StringifierClass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MainMenu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Monster.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MonsterFactory.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CPP_Monsterkampfsimulator.h">
       <Filter>Core\Header</Filter>
@@ -86,14 +95,29 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HeroCreationMenu.h">
+      <Filter>Header Files\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>Header Files\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="StringifierClass.h">
+      <Filter>Header Files\HelperClasses</Filter>
+    </ClInclude>
     <ClInclude Include="Commands.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\HelperClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterFactory.h">
+      <Filter>Header Files\HelperClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="FightingClass.h">
+      <Filter>Header Files\Gameplay</Filter>
     </ClInclude>
     <ClInclude Include="HeroClass.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="HeroCreationMenu.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Monster.h">
+      <Filter>Header Files\Gameplay</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

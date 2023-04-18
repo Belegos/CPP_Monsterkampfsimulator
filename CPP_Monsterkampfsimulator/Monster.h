@@ -13,7 +13,7 @@ public:
 	string _monsterRace{};
 	
 private:
-	int _monsterHealth{}; //braces initialize to zero
+	int _monsterHealth{};
 	int _currentHealth{_monsterHealth};
 	int _monsterAttack{};
 	int _monsterDefense{};
