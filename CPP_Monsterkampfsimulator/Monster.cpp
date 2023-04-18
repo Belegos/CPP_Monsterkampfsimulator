@@ -82,6 +82,51 @@ const enum class MonsterType
 };
 
 // Property Getters and Setters
+int Monster::ModifyHealth()
+{
+	return _monsterHealth;
+}
+
+int Monster::ModifyHealth(const int& _newHealth)
+{
+	_monsterHealth = _newHealth;
+	return _monsterHealth;
+}
+
+int Monster::ModifyAttack()
+{
+	return _monsterAttack;
+}
+
+int Monster::ModifyAttack(const int& _newAttack)
+{
+	_monsterAttack = _newAttack;
+	return _monsterAttack;
+}
+
+int Monster::ModifyDefense()
+{
+	return _monsterDefense;
+}
+
+int Monster::ModifyDefense(const int& _newDefense)
+{
+	_monsterDefense = _newDefense;
+	return _monsterDefense;
+}
+
+int Monster::ModifySpeed()
+{
+	return _monsterSpeed;
+}
+
+int Monster::ModifySpeed(const int& _newSpeed)
+{
+	_monsterSpeed = _newSpeed;
+	return _monsterSpeed;
+}
+
+
 int Monster::GetHealth()
 {
 	return _currentHealth;

@@ -103,9 +103,12 @@ void HeroCreationMenu::increaseFunction(Commands* const pCommands, int _selected
 				system("cls");
 				pCommands->GoToXY(0, 0);
 				//TODO: Start HeroFight!
+				pHeroClass->ModifyHealth(_heroAttributes[0]);
+				pHeroClass->ModifyAttack(_heroAttributes[1]);
+				pHeroClass->ModifyDefense(_heroAttributes[2]);
+				pHeroClass->ModifySpeed(_heroAttributes[3]);
 				std::shared_ptr<FightingClass> _fight = std::make_shared<FightingClass>();
 				_fight->InitFight(pCommands,pHeroClass);
-
 				break;
 			}
 		}

@@ -4,6 +4,14 @@ using std::string;
 class Monster 
 {
 public:
+	int ModifyHealth();
+	int ModifyHealth(const int& _newHealth);
+	int ModifyAttack();
+	int ModifyAttack(const int& _newAttack);
+	int ModifyDefense();
+	int ModifyDefense(const int& _newDefense);
+	int ModifySpeed();
+	int ModifySpeed(const int& _newSpeed);
 	int GetHealth();
 	void SetHealth(const int& _newHealth);
 	int GetMaxHealth();
