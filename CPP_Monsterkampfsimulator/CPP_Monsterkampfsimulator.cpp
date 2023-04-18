@@ -6,7 +6,6 @@
 #include "Commands.h"
 #include "MainMenu.h"
 #include "Artwork.h"
-//#include "StringifierClass.h"
 #include "Monster.h"
 #include "MonsterFactory.h"
 #include "HeroClass.h"
@@ -27,7 +26,6 @@ void setPointerNullDeleteObject(T*& pPointer)
 #pragma endregion templates
 
 #pragma region Forward_Declaration
-bool _musicIsPlaying{ true };
 bool* pMusicIsPlaying{ nullptr };
 MainMenu* pMainMenu{ nullptr };
 //StringifierClass* pStringifierClass{ nullptr };

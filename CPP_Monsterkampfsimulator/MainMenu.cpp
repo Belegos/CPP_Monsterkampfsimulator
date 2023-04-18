@@ -1,11 +1,9 @@
-#pragma once
+#include "MainMenu.h"
 #include <iostream>
 #include <conio.h>
 #include <cstdlib>
-#include <thread>
 #include <Windows.h>
 #include <mmsystem.h>
-#include "MainMenu.h"
 #pragma comment(lib, "winmm.lib")
 using namespace std;
 
@@ -13,12 +11,17 @@ using namespace std;
 /// The "StartMenu" function displays a menu with three options and
 /// allows the user to navigate and select an option using arrow keys and the enter key. 
 /// </summary>
-void MainMenu::StartMenu(Commands* const pCommands, Artwork* const pArtwork, std::thread* const pMusicThread,
-	MainMenu* const pMainMenu, bool* pMusicIsPlaying, HeroClass* const pHeroClass,
-	HeroCreationMenu* const pHeroCreationMenu)// const = read only Pointer, to prevent creating a new obj on the pointer while using 
+void MainMenu::StartMenu(
+	Commands* const pCommands, 
+	Artwork* const pArtwork, 
+	std::thread* const pMusicThread,
+	MainMenu* const pMainMenu, 
+	bool* pMusicIsPlaying, 
+	HeroClass* pHeroClass,
+	HeroCreationMenu* pHeroCreationMenu)// const = read only Pointer, to prevent creating a new obj on the pointer while using 
 {
 	int Set[] = { 12,7,7,7 };	// 7 = white , 12 = red
-	int counter = 1;
+	int _menuPoint = 1;
 
 	pArtwork->Title();
 	while (true)
@@ -49,19 +52,19 @@ void MainMenu::StartMenu(Commands* const pCommands, Artwork* const pArtwork, std
 		cout << "the enter key to select an option." << endl;
 
 
-		const char key = _getch();		// reads a single character from the keyboard without echoing it to the console.
+		char key = _getch();		// reads a single character from the keyboard without echoing it to the console.
 
-		if (key == 80 && (counter >= 1 && counter <= 3))		//if key pressed is down arrow
+		if (key == 80 && (_menuPoint >= 1 && _menuPoint <= 3))		//if key pressed is down arrow
 		{
-			counter++;
+			_menuPoint++;
 		}
-		else if (key == 72 && (counter >= 2 && counter <= 4))	//if key pressed is up arrow
+		else if (key == 72 && (_menuPoint >= 2 && _menuPoint <= 4))	//if key pressed is up arrow
 		{
-			counter--;
+			_menuPoint--;
 		}
 		else if (key == 13)	//if key pressed is enter
 		{
-			if (counter == 1)
+			if (_menuPoint == 1)
 			{
 				//start game
 				pCommands->GoToXY(10, 22);
@@ -70,7 +73,7 @@ void MainMenu::StartMenu(Commands* const pCommands, Artwork* const pArtwork, std
 				pHeroCreationMenu->StartHeroCreation(pHeroClass, pCommands);
 				break;
 			}
-			else if (counter == 2)
+			else if (_menuPoint == 2)
 			{
 				//help
 				pCommands->GoToXY(10, 22);
@@ -79,7 +82,7 @@ void MainMenu::StartMenu(Commands* const pCommands, Artwork* const pArtwork, std
 				DisplayOptions(pCommands, pArtwork, pMusicThread, this, pMusicIsPlaying, pHeroClass, pHeroCreationMenu);
 				break;
 			}
-			else if (counter == 3)
+			else if (_menuPoint == 3)
 			{
 				//help
 				pCommands->ClearLine(22);
@@ -87,7 +90,7 @@ void MainMenu::StartMenu(Commands* const pCommands, Artwork* const pArtwork, std
 				cout << "USE ARROW KEYS AND ENTER TO SELECT" << "\r" << endl;
 				continue;
 			}
-			else if (counter == 4)
+			else if (_menuPoint == 4)
 			{
 				pCommands->ClearLine(22);
 				pCommands->GoToXY(10, 22);
@@ -102,7 +105,7 @@ void MainMenu::StartMenu(Commands* const pCommands, Artwork* const pArtwork, std
 		Set[2] = 7;
 		Set[3] = 7;
 
-		switch (counter)
+		switch (_menuPoint)
 		{
 		case 1:
 			Set[0] = 12; //color.red
@@ -120,7 +123,16 @@ void MainMenu::StartMenu(Commands* const pCommands, Artwork* const pArtwork, std
 	}
 }
 
-void MainMenu::DisplayOptions(Commands* const pCommands, Artwork* const pArtwork, std::thread* pMusicThread, MainMenu* const pMainMenu, bool* pMusicIsPlaying, HeroClass* const pHeroClass, HeroCreationMenu* const pHeroCreationMenu)
+void MainMenu::DisplayOptions
+(
+	Commands* const pCommands, 
+	Artwork* const pArtwork, 
+	std::thread* pMusicThread, 
+	MainMenu* const pMainMenu, 
+	bool* pMusicIsPlaying, 
+	HeroClass* pHeroClass, 
+	HeroCreationMenu* pHeroCreationMenu
+)
 {
 	int counter = 1;
 	int Set[] = { 12,7 };	// 7 = white , 12 = red

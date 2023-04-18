@@ -1,4 +1,5 @@
-﻿#include <iostream>
+﻿#pragma once //warnings?!
+#include <iostream>
 #include <string>
 #include "Artwork.h"
 
@@ -30,17 +31,17 @@ void Artwork::Options() {
     /_/                              )" << std::endl;
 }
 
-void Artwork::FrameWork()
-
-//TODO: HOW TO UNICODE INTO CODE :-(
-{
-	std::cout << R"(
- ┌──────────────────┬──────────────────┐
- │                  │                  │
- ├──────────────────┼──────────────────┤
- │  Current Life    │  Enemy Life      │
- ├──────────────────┼──────────────────┤
- │                  │                  │
- └──────────────────┴──────────────────┘
-)" << std::endl;
-}
+//void Artwork::FrameWork()
+//
+////TODO: HOW TO UNICODE INTO CODE :-(
+//{
+//	std::cout << R"(
+// ┌──────────────────┬──────────────────┐
+// │                  │                  │
+// ├──────────────────┼──────────────────┤
+// │  Current Life    │  Enemy Life      │
+// ├──────────────────┼──────────────────┤
+// │                  │                  │
+// └──────────────────┴──────────────────┘
+//)" << std::endl;
+//}

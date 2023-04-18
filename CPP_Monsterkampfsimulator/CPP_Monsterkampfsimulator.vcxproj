@@ -94,6 +94,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -109,7 +110,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,6 +128,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -148,6 +150,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>
       </AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -161,6 +164,7 @@
     <ClCompile Include="Artwork.cpp" />
     <ClCompile Include="Commands.cpp" />
     <ClCompile Include="CPP_Monsterkampfsimulator.cpp" />
+    <ClCompile Include="FightingClass.cpp" />
     <ClCompile Include="HeroClass.cpp" />
     <ClCompile Include="HeroCreationMenu.cpp" />
     <ClCompile Include="MainMenu.cpp" />
@@ -172,6 +176,7 @@
     <ClInclude Include="Artwork.h" />
     <ClInclude Include="Commands.h" />
     <ClInclude Include="CPP_Monsterkampfsimulator.h" />
+    <ClInclude Include="FightingClass.h" />
     <ClInclude Include="HeroClass.h" />
     <ClInclude Include="HeroCreationMenu.h" />
     <ClInclude Include="MainMenu.h" />
