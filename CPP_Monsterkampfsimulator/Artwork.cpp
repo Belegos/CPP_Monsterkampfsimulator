@@ -1,4 +1,5 @@
-﻿#include <iostream>
+﻿#pragma once //warnings?!
+#include <iostream>
 #include <string>
 #include "Artwork.h"
 

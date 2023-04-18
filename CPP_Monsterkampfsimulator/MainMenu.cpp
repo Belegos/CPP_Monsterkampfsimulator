@@ -1,11 +1,9 @@
-#pragma once
+#include "MainMenu.h"
 #include <iostream>
 #include <conio.h>
 #include <cstdlib>
-#include <thread>
 #include <Windows.h>
 #include <mmsystem.h>
-#include "MainMenu.h"
 #pragma comment(lib, "winmm.lib")
 using namespace std;
 
@@ -13,9 +11,14 @@ using namespace std;
 /// The "StartMenu" function displays a menu with three options and
 /// allows the user to navigate and select an option using arrow keys and the enter key. 
 /// </summary>
-void MainMenu::StartMenu(Commands* const pCommands, Artwork* const pArtwork, std::thread* const pMusicThread,
-	MainMenu* const pMainMenu, bool* pMusicIsPlaying, HeroClass* const pHeroClass,
-	HeroCreationMenu* const pHeroCreationMenu)// const = read only Pointer, to prevent creating a new obj on the pointer while using 
+void MainMenu::StartMenu(
+	Commands* const pCommands, 
+	Artwork* const pArtwork, 
+	std::thread* const pMusicThread,
+	MainMenu* const pMainMenu, 
+	bool* pMusicIsPlaying, 
+	HeroClass* pHeroClass,
+	HeroCreationMenu* pHeroCreationMenu)// const = read only Pointer, to prevent creating a new obj on the pointer while using 
 {
 	int Set[] = { 12,7,7,7 };	// 7 = white , 12 = red
 	int _menuPoint = 1;
@@ -120,7 +123,16 @@ void MainMenu::StartMenu(Commands* const pCommands, Artwork* const pArtwork, std
 	}
 }
 
-void MainMenu::DisplayOptions(Commands* const pCommands, Artwork* const pArtwork, std::thread* pMusicThread, MainMenu* const pMainMenu, bool* pMusicIsPlaying, HeroClass* const pHeroClass, HeroCreationMenu* const pHeroCreationMenu)
+void MainMenu::DisplayOptions
+(
+	Commands* const pCommands, 
+	Artwork* const pArtwork, 
+	std::thread* pMusicThread, 
+	MainMenu* const pMainMenu, 
+	bool* pMusicIsPlaying, 
+	HeroClass* pHeroClass, 
+	HeroCreationMenu* pHeroCreationMenu
+)
 {
 	int i = 1;
 	int counter = 1;

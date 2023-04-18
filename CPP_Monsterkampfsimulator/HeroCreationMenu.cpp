@@ -1,9 +1,4 @@
-#include <iostream>
-#include <conio.h>
-#include <Windows.h>
-#include <array>
 #include "HeroCreationMenu.h"
-#include "HeroClass.h"
 
 /// <summary>
 /// 
@@ -16,7 +11,7 @@ void HeroCreationMenu::StartHeroCreation(HeroClass* const pHeroClass, Commands* 
 	int _selectedHeroAttribute{ 0 };//index to navigate
 	int* pHeroAttributes[] = { &_heroAttributes[1],&_heroAttributes[2],&_heroAttributes[3],&_heroAttributes[4] };
 
-	increaseFunction(pCommands, _selectedHeroAttribute, _maxAttributes, _minAttributes, pHeroAttributes, key);
+	increaseFunction(pCommands, _selectedHeroAttribute, _maxAttributes, _minAttributes, pHeroAttributes, key, pHeroClass);
 }
 
 /// <summary>
@@ -29,7 +24,7 @@ void HeroCreationMenu::StartHeroCreation(HeroClass* const pHeroClass, Commands* 
 /// <param name="m_currentAttributes"></param>
 /// <param name="m_input"></param>
 void HeroCreationMenu::increaseFunction(Commands* const pCommands, int _selectedHeroAttribute, int m_maximumAttributes,
-	int m_minimumAttributes, int* m_currentAttributes[], char m_input)
+	int m_minimumAttributes, int* m_currentAttributes[], char m_input, HeroClass* pHeroClass)
 {
 	int Set[6] = { 12,7,7,7,7,12 };	// 7 = white , 12 = red
 	int _menuPoint = 1;
@@ -105,10 +100,11 @@ void HeroCreationMenu::increaseFunction(Commands* const pCommands, int _selected
 			}
 			else if (_AttributePoints == 0 && _heroAttributes[0] > 0 && _heroAttributes[1] > 0 && _heroAttributes[2] > 0 && _heroAttributes[3] > 0)
 			{
-				//TODO: start Combat with the created hero
 				system("cls");
 				pCommands->GoToXY(0, 0);
-				std::cout << "You have created a new Hero!" << std::endl;
+				//TODO: Start HeroFight!
+				std::shared_ptr<FightingClass> _fight = std::make_shared<FightingClass>();
+				_fight->InitFight(pCommands,pHeroClass);
 
 				break;
 			}
@@ -160,7 +156,7 @@ void HeroCreationMenu::MenuNavigationUpAndDown(Commands* const& pCommands, char 
 	}
 	if (_errorDisplayed = true && (m_input == 72 || m_input == 80))
 	{
-		for (size_t i = 15; i < 19; i++)
+		for (int i = 15; i < 19; i++)
 		{
 			pCommands->ClearLine(i);
 		}

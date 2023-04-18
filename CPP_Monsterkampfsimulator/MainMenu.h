@@ -4,15 +4,28 @@
 #include "Artwork.h"
 #include "HeroClass.h"
 #include "HeroCreationMenu.h"
+
 class MainMenu
 {
 public:
-	void StartMenu(Commands* const pCommands, Artwork* const pArtwork, 
-		std::thread* pMusicThread, MainMenu* const pMainMenu,bool* pMusicIsPlaying,
-		HeroClass* const pHeroClass, HeroCreationMenu* const pHeroCreationMenu);
+	void StartMenu(
+		Commands* const pCommands, 
+		Artwork* const pArtwork, 
+		std::thread* pMusicThread, 
+		MainMenu* const pMainMenu,
+		bool* pMusicIsPlaying,
+		HeroClass* pHeroClass, 
+		HeroCreationMenu* pHeroCreationMenu);
 private:
-	void DisplayOptions(Commands* const pCommands, Artwork* const pArtwork, 
-		std::thread* pMusicThread, MainMenu* const pMainMenu, bool* pMusicIsPlaying, 
-		HeroClass* const pHeroClass, HeroCreationMenu* const pHeroCreationMenu);
+	void DisplayOptions
+	(
+		Commands* const pCommands, 
+		Artwork* const pArtwork, 
+		std::thread* pMusicThread, 
+		MainMenu* const pMainMenu, 
+		bool* pMusicIsPlaying, 
+		HeroClass* pHeroClass, 
+		HeroCreationMenu* pHeroCreationMenu
+	);
 };
 

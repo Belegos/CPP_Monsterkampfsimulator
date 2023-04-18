@@ -1,6 +1,6 @@
 #include "FightingClass.h"
 
-void FightingClass::InitFight(Commands* const pCommands,HeroClass* pHeroClass, MonsterFactory* pMonsterFactory)
+void FightingClass::InitFight(Commands* const pCommands,HeroClass* pHeroClass)
 {
 	int currentHealth = pHeroClass->ModifyHealth();
 	int maximumHealth = pHeroClass->ModifyHealth();
@@ -12,14 +12,14 @@ void FightingClass::InitFight(Commands* const pCommands,HeroClass* pHeroClass, M
 		int _rndNumber = 1; //for testing
 		while (currentHealth >= 0)
 		{
-			m_Enemy = SelectEnemy(_rndNumber, pMonsterFactory, m_Enemy);
+			m_Enemy = SelectEnemy(_rndNumber, m_factory, m_Enemy);
 			StartFight(m_Enemy);
 		}
 	}
 	HeroLost(pCommands);
 }
 
-Monster* FightingClass::SelectEnemy(int _rndNumber, MonsterFactory* pMonsterFactory, Monster* m_Enemy)
+Monster* FightingClass::SelectEnemy(int _rndNumber,std::shared_ptr<MonsterFactory> pMonsterFactory, Monster* m_Enemy)
 {
 	if (_rndNumber == 1) {
 		MonsterFactory* pMonsterFactory = new FactoryDragon();
