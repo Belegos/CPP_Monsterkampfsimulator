@@ -5,7 +5,7 @@ void FightingClass::InitFight(Commands* const pCommands, HeroClass* pHeroClass)
 	int _roundCounter = 1;
 	while (pHeroClass->ModifyHealth() > 0)
 	{
-		int _rndNumber = 8; //for testing
+		int _rndNumber = 7; //for testing
 		while (pHeroClass->ModifyHealth() > 0)
 		{
 			std::cout << ">>>>>> Round " << _roundCounter << " has started. <<<<<<" << std::endl;
@@ -13,6 +13,13 @@ void FightingClass::InitFight(Commands* const pCommands, HeroClass* pHeroClass)
 			StartFight(m_Enemy, pHeroClass);
 			if (pHeroClass->ModifyHealth() <= 0)break;
 			_roundCounter++;
+			_rndNumber++;
+			if (_rndNumber >= 9) { _rndNumber = 1; }
+			if(_roundCounter >= 15)
+			{
+				std::cout << "There are no more Monsters left." << std::endl;
+				break;
+			}
 		}
 		if (pHeroClass->ModifyHealth() <= 0)break;
 
