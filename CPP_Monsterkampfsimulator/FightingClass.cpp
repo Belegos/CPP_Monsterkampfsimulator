@@ -2,12 +2,13 @@
 
 void FightingClass::InitFight(Commands* const pCommands, HeroClass* pHeroClass)
 {
-
+	int _roundCounter = 1;
 	while (pHeroClass->ModifyHealth() > 0)
 	{
-		int _rndNumber = 1; //for testing
+		int _rndNumber = 8; //for testing
 		while (pHeroClass->ModifyHealth() > 0)
 		{
+			std::cout << ">>>>>> Round " << _roundCounter << " has began. <<<<<<" << std::endl;
 			m_Enemy = SelectEnemy(_rndNumber, m_factory, m_Enemy);
 			StartFight(m_Enemy, pHeroClass);
 			if (pHeroClass->ModifyHealth() <= 0)break;
