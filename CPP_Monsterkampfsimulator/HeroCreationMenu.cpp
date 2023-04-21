@@ -174,7 +174,7 @@ void HeroCreationMenu::DisplayLeftAttributePoints(Commands* const& pCommands)
 	pCommands->GoToXY(0, 8);
 	pCommands->ClearCurrentLine();
 	pCommands->Color(7);
-	printf("Attribute points: %d\n", _AttributePoints);
+	printf("Attribute points: %d\n", _AttributePoints);//TODO: check if cout would also work fine?!
 	pCommands->GoToXY(0, 9);
 }
 /// <summary>

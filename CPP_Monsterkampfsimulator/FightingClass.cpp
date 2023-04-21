@@ -1,13 +1,13 @@
 #include "FightingClass.h"
 #include "MainMenu.h"
-#include<conio.h>
+#include <conio.h>
 
 void FightingClass::InitFight(Commands* const pCommands, HeroClass* pHeroClass)
 {
 	int _roundCounter = 1;
 	while (pHeroClass->ModifyHealth() > 0)
 	{
-		int _rndNumber = 7; //for testing
+		int _rndNumber = 7; //TODO: for testing
 		while (pHeroClass->ModifyHealth() > 0)
 		{
 			RoundTelling(pCommands, _roundCounter);

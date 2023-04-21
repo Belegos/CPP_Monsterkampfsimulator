@@ -60,7 +60,6 @@ int main()
 	Init();
 
 	pMainMenu = new MainMenu();
-	//pStringifierClass = new StringifierClass();
 	pCommands = new Commands();
 	pArtwork = new Artwork();
 	pMusicIsPlaying = new bool{ true };

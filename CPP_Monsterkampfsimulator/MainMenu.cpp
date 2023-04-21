@@ -180,7 +180,6 @@ void MainMenu::DisplayOptions
 					switch (*pMusicIsPlaying)
 					{
 					case true:
-						//pMusicThread->join();
 						PlaySound(NULL, NULL, 0);
 						pMusicThread ->~thread();  
 						*pMusicIsPlaying = false;
