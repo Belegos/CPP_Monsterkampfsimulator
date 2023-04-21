@@ -8,21 +8,19 @@
 #include "HeroClass.h"
 #include "FightingClass.h"
 
-
-
 class HeroCreationMenu
 {
 public:
-	void StartHeroCreation(HeroClass* pHeroClass,Commands* const pCommands);
+	void StartHeroCreation(HeroClass* pHeroClass, Commands* const pCommands);
 private:
 	void increaseFunction(Commands* const pCommands, int index, int m_maximumAttributes,
 		int m_minimumAttributes, int* m_currentAttriebutes[], char m_input, HeroClass* pHeroClass);
 
-	void MenuNavigationUpAndDown(Commands* const& pCommands,char m_input, int& _menuPoint, int& _selectedHeroAttribute);
+	void MenuNavigationUpAndDown(Commands* const& pCommands, char m_input, int& _menuPoint, int& _selectedHeroAttribute);
 
 	void DisplayLeftAttributePoints(Commands* const& pCommands);
 
-	void DisplayCurrentAttributes(Commands* const& pCommands, int  Set[5], std::array<std::string,4> _heroAttributesNames);
+	void DisplayCurrentAttributes(Commands* const& pCommands, int  Set[6], std::array<std::string, 4> _heroAttributesNames);
 	char key{}; //key input
 	int _maxAttributes{ 100 }; //maximum amount of attribute points
 	int _AttributePoints{ _maxAttributes }; //amount of attribute points to spent

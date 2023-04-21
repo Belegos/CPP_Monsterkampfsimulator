@@ -170,7 +170,6 @@
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="MonsterFactory.cpp" />
-    <ClCompile Include="StringifierClass.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Artwork.h" />
@@ -183,7 +182,6 @@
     <ClInclude Include="Monster.h" />
     <ClInclude Include="MonsterFactory.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="StringifierClass.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CPP_Monsterkampfsimulator.rc" />

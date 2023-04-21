@@ -33,7 +33,6 @@ void setPointerNullDeleteObject(T*& pPointer)
 #pragma region Forward_Declaration
 bool* pMusicIsPlaying{ nullptr };
 MainMenu* pMainMenu{ nullptr };
-//StringifierClass* pStringifierClass{ nullptr };
 Commands* pCommands{ nullptr };
 Artwork* pArtwork{ nullptr };
 std::thread* pMusicThread{ nullptr };
@@ -49,7 +48,6 @@ static void Init()
 {
 	checkNullPtr(pMusicIsPlaying);
 	checkNullPtr(pMainMenu);
-	//checkNullPtr(pStringifierClass);
 	checkNullPtr(pCommands);
 	checkNullPtr(pArtwork);
 	checkNullPtr(pMusicThread);
@@ -78,30 +76,14 @@ int main()
 		pMainMenu->StartMenu(pCommands, pArtwork, pMusicThread, pMainMenu, pMusicIsPlaying, pHeroClass, pHeroCreationMenu,_isPlaying);
 	}
 
-
 	setPointerNullDeleteObject(pHeroCreationMenu);
 	setPointerNullDeleteObject(pHeroClass);
 	setPointerNullDeleteObject(pMusicIsPlaying);
 	setPointerNullDeleteObject(pMusicThread);
 	setPointerNullDeleteObject(pArtwork);
 	setPointerNullDeleteObject(pCommands);
-	//setPointerNullDeleteObject(pStringifierClass);
 	setPointerNullDeleteObject(pMainMenu);
 #pragma endregion startMainLoop
 
 	return 0;
 }
-
-
-#pragma region Deckweiß
-// int* pX = &X -> integer pointer names pX is set to the adress of X
-// int y = *pX -> integer y is set to the thing pointed to by pX
-// 
-// int* pNumber -> Pointer to an integeradress
-// &iNumber -> Adress of iNumber
-// *pNumber -> Value of the adress of pNumber
-// int* pNumber = &iNumber -> Pointer to the adress of iNumber
-// int* pNumber = new int; -> Pointer to a new integeradress
-// delete pNumber; -> free the adress of pNumber
-// pNumber = nullptr; -> free the adress of pNumber
-#pragma endregion Deckweiß
