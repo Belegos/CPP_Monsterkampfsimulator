@@ -23,29 +23,12 @@ void FightingClass::InitFight(Commands* const pCommands, HeroClass* pHeroClass)
 	HeroLost(pCommands, pHeroClass);
 }
 
-void FightingClass::CheckHeroLifeAndHeal(HeroClass* pHeroClass, int& _roundCounter, int& _rndNumber, Commands* const& pCommands, int& retflag)
-{
-	retflag = 1;
-	if (pHeroClass->ModifyHealth() <= 0) { retflag = 2; return; };
-	_roundCounter++;
-	_rndNumber++;
-	HeroRests(pCommands, pHeroClass);
-	if (_rndNumber >= 9) { _rndNumber = 1; }
-	if (_roundCounter >= 30)
-	{
-		std::cout << "There are no more Monsters left." << std::endl;
-		{ retflag = 2; return; };
-	}
-}
-
 void FightingClass::RoundTelling(Commands* const& pCommands, int _roundCounter)
 {
 	pCommands->Color(5);
 	std::cout << ">>>>>> Round " << _roundCounter << " has started. <<<<<<" << std::endl;
 	pCommands->Color(7);
 }
-
-
 Monster* FightingClass::SelectEnemy(int _rndNumber, std::shared_ptr<MonsterFactory> pMonsterFactory, Monster* m_Enemy)
 {
 	if (_rndNumber == 1) {
@@ -82,7 +65,6 @@ Monster* FightingClass::SelectEnemy(int _rndNumber, std::shared_ptr<MonsterFacto
 	}
 	return m_Enemy;
 }
-
 void FightingClass::StartFight(Commands* const pCommands, Monster* m_Enemy, HeroClass* pHeroClass)
 {
 	int _heroAttack = pHeroClass->ModifyAttack() - m_Enemy->ModifyDefense();
@@ -120,14 +102,6 @@ void FightingClass::StartFight(Commands* const pCommands, Monster* m_Enemy, Hero
 			}
 		}
 }
-
-void FightingClass::HeroLost(Commands* const pCommands, HeroClass* pHeroClass)
-{
-	std::cout << "The hero has " << pHeroClass->ModifyHealth() << " health left. Game over." << std::endl;
-	std::cout << "Press any key to continue to main menu." << std::endl;
-	char _anyKey = _getch();
-}
-
 void FightingClass::HeroAttack(Commands* const pCommands, HeroClass* pHeroClass, int _heroAttack, Monster* m_Enemy, int _enemyAttack)
 {
 	pCommands->Color(1);
@@ -146,7 +120,6 @@ void FightingClass::HeroAttack(Commands* const pCommands, HeroClass* pHeroClass,
 	}
 	pCommands->Color(7);
 }
-
 void FightingClass::EnemyAttack(Commands* const pCommands, HeroClass* pHeroClass, int _heroAttack, Monster* m_Enemy, int _enemyAttack)
 {
 	pCommands->Color(12);
@@ -165,6 +138,20 @@ void FightingClass::EnemyAttack(Commands* const pCommands, HeroClass* pHeroClass
 	}
 	pCommands->Color(7);
 }
+void FightingClass::CheckHeroLifeAndHeal(HeroClass* pHeroClass, int& _roundCounter, int& _rndNumber, Commands* const& pCommands, int& retflag)
+{
+	retflag = 1;
+	if (pHeroClass->ModifyHealth() <= 0) { retflag = 2; return; };
+	_roundCounter++;
+	_rndNumber++;
+	HeroRests(pCommands, pHeroClass);
+	if (_rndNumber >= 9) { _rndNumber = 1; }
+	if (_roundCounter >= 30)
+	{
+		std::cout << "There are no more Monsters left." << std::endl;
+		{ retflag = 2; return; };
+	}
+}
 void FightingClass::HeroRests(Commands* const pCommands, HeroClass* pHeroClass)
 {
 	pCommands->Color(2);
@@ -172,4 +159,10 @@ void FightingClass::HeroRests(Commands* const pCommands, HeroClass* pHeroClass)
 	pHeroClass->ModifyHealth(pHeroClass->ModifyHealth() + _healValue);
 	std::cout << "The hero rests a little bit. He heals himself for " << _healValue << " health." << std::endl;
 	pCommands->Color(7);
+}
+void FightingClass::HeroLost(Commands* const pCommands, HeroClass* pHeroClass)
+{
+	std::cout << "The hero has " << pHeroClass->ModifyHealth() << " health left. Game over." << std::endl;
+	std::cout << "Press any key to continue to main menu." << std::endl;
+	char _anyKey = _getch();
 }
