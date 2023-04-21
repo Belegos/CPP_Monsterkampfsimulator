@@ -34,12 +34,12 @@ void HeroCreationMenu::increaseFunction(Commands* const pCommands, int _selected
 		pCommands->GoToXY(0, 0);
 		pCommands->Color(7);
 		std::cout << "Choose your attributes" << std::endl;
-		std::cout << "----------------------" << std::endl;
-		std::cout << "Use the arrow keys to navigate" << std::endl;
+		std::cout << "------------------------------------------------------------------" << std::endl;
+		std::cout << "Use the arrow keys to navigate or backspace to mainmenu" << std::endl;
 		std::cout << "Use the left and right arrow keys to increase or decrease the attributes" << std::endl;
-		std::cout << "----------------------" << std::endl;
-		std::cout << "Press enter to continue if attributes are zero" << std::endl;
-		std::cout << "----------------------" << std::endl;
+		std::cout << "------------------------------------------------------------------" << std::endl;
+		std::cout << "Press enter to continue, if attribute points are zero" << std::endl;
+		std::cout << "------------------------------------------------------------------" << std::endl;
 
 		DisplayLeftAttributePoints(pCommands);
 
@@ -69,10 +69,8 @@ void HeroCreationMenu::increaseFunction(Commands* const pCommands, int _selected
 		}
 		if (m_input == 8)//backspace 
 		{
-			//TODO: go back to MainMenu
-			//TODO: create class to store important pointer for menu obj and other important global var's.
+			//breaks back to mainmenu
 			break;
-			//pMainMenu->StartMenu(pCommands, pArtwork, pMusicThread, pMainMenu, pMusicIsPlaying, pHeroClass, pHeroCreationMenu);
 		}
 		if (m_input == 13)
 		{
