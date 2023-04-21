@@ -69,43 +69,15 @@ int main()
 	pHeroClass = new HeroClass();
 	pHeroCreationMenu = new HeroCreationMenu();
 	pCommands->StartThreadedBackgroundMusic(pMusicIsPlaying, pMusicThread);
+	bool _isPlaying = true;
 
 
 #pragma region startMainLoop
-	pMainMenu->StartMenu(pCommands, pArtwork, pMusicThread, pMainMenu, pMusicIsPlaying, pHeroClass, pHeroCreationMenu);
+	while (_isPlaying)
+	{
+		pMainMenu->StartMenu(pCommands, pArtwork, pMusicThread, pMainMenu, pMusicIsPlaying, pHeroClass, pHeroCreationMenu,_isPlaying);
+	}
 
-#pragma region TestingArea
-	/*Monster* pMonster1 = nullptr;
-	Monster* pMonster2 = nullptr;
-
-	MonsterFactory* factory = new FactoryDragon();
-	checkNullPtr(pMonster1);
-	pMonster1 = factory->createMonster();
-
-	factory = new FactoryGoblin();
-	checkNullPtr(pMonster2);
-	pMonster2 = factory->createMonster();
-
-	pArtwork->FrameWork();
-	pCommands->GoToXY(22,2);
-	cout << "Monster1: " << pMonster1->_monsterRace << endl;
-	pCommands->GoToXY(3,2);
-	cout << "Monster2: " << pMonster2->_monsterRace << endl;
-	cout << "" << endl;
-	cout << "" << endl;
-	cout << "" << endl;
-	cout << "" << endl;
-	cout << "" << endl;
-	cout << "" << endl;
-	cout << "" << endl;
-	cout << "" << endl;
-	cout << "" << endl;
-	cout << "" << endl;
-
-
-	setPointerNullDeleteObject(pMonster1);
-	setPointerNullDeleteObject(pMonster2);*/
-#pragma endregion TestingArea
 
 	setPointerNullDeleteObject(pHeroCreationMenu);
 	setPointerNullDeleteObject(pHeroClass);
@@ -133,15 +105,3 @@ int main()
 // delete pNumber; -> free the adress of pNumber
 // pNumber = nullptr; -> free the adress of pNumber
 #pragma endregion Deckweiﬂ
-
-//cout << obj1._monsterRace<< "\n"<< "Life:" << strings.HealthString(obj1.GetMaxHealth(), obj1.GetHealth()) << endl;
-//printf("Monster Health: %s", obj1.HealthDisplay());
-//std::cout << "Hallo Andre" << std::endl;
-//cout << "so geht's auch!"<< endl;
-//cout << "type something and I will repeat: ";
-//char sz[256];
-//cin >> sz; //>> is the extraction operator, << is the insertion operator
-//cout << "You typed: " << sz << endl; //repeats only the first word
-//cout << "type something and I will repeat: ";
-//cin.getline(sz, 256); //cin.getline() reads a whole line
-//cout << "You typed: " << sz << endl; //repeats the whole line

@@ -1,8 +1,8 @@
 #pragma once
 #include <thread>
-#include "Commands.h"
+//#include "Commands.h"
 #include "Artwork.h"
-#include "HeroClass.h"
+//#include "HeroClass.h"
 #include "HeroCreationMenu.h"
 
 class MainMenu
@@ -15,7 +15,8 @@ public:
 		MainMenu* const pMainMenu,
 		bool* pMusicIsPlaying,
 		HeroClass* pHeroClass, 
-		HeroCreationMenu* pHeroCreationMenu);
+		HeroCreationMenu* pHeroCreationMenu, 
+		bool _isPlaying);
 private:
 	void DisplayOptions
 	(
@@ -25,7 +26,8 @@ private:
 		MainMenu* const pMainMenu, 
 		bool* pMusicIsPlaying, 
 		HeroClass* pHeroClass, 
-		HeroCreationMenu* pHeroCreationMenu
+		HeroCreationMenu* pHeroCreationMenu,
+		bool _isPlaying
 	);
 };
 

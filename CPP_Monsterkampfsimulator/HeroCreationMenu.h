@@ -2,9 +2,7 @@
 #define HeroCreationMenu_h
 #include <iostream>
 #include <conio.h>
-//#include <Windows.h>
 #include <memory>
-//#include <string>
 #include <array>
 #include "Commands.h"
 #include "HeroClass.h"

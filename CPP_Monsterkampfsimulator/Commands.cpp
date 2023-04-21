@@ -24,7 +24,7 @@ void Commands::Color(int color)
 /// <param name="y">Y-Position in Console</param>
 void Commands::GoToXY(int x, int y)
 {
-	COORD c;
+	COORD c{};
 	c.X = x;
 	c.Y = y;
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);// Set Console Cursor Position

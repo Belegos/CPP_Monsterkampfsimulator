@@ -18,10 +18,12 @@ void MainMenu::StartMenu(
 	MainMenu* const pMainMenu, 
 	bool* pMusicIsPlaying, 
 	HeroClass* pHeroClass,
-	HeroCreationMenu* pHeroCreationMenu)// const = read only Pointer, to prevent creating a new obj on the pointer while using 
+	HeroCreationMenu* pHeroCreationMenu, 
+	bool _isPlaying)// const = read only Pointer, to prevent creating a new obj on the pointer while using 
 {
 	int Set[] = { 12,7,7,7 };	// 7 = white , 12 = red
 	int _menuPoint = 1;
+	system("cls");
 
 	pArtwork->Title();
 	for (int i = 1;;)
@@ -79,7 +81,7 @@ void MainMenu::StartMenu(
 				pCommands->GoToXY(10, 22);
 				pCommands->ClearCurrentLine();
 				cout << "OPTIONS" << "\r" << endl;
-				DisplayOptions(pCommands, pArtwork, pMusicThread, this, pMusicIsPlaying,pHeroClass, pHeroCreationMenu);
+				DisplayOptions(pCommands, pArtwork, pMusicThread, this, pMusicIsPlaying,pHeroClass, pHeroCreationMenu, _isPlaying);
 				break;
 			}
 			else if (_menuPoint == 3)
@@ -92,9 +94,8 @@ void MainMenu::StartMenu(
 			}
 			else if (_menuPoint == 4)
 			{
-				pCommands->ClearLine(22);
-				pCommands->GoToXY(10, 22);
-				cout << "EXIT" << "\r" << endl;
+				system("cls");
+				_isPlaying = false;
 				exit(0);
 			}
 			break;
@@ -131,7 +132,8 @@ void MainMenu::DisplayOptions
 	MainMenu* const pMainMenu, 
 	bool* pMusicIsPlaying, 
 	HeroClass* pHeroClass, 
-	HeroCreationMenu* pHeroCreationMenu
+	HeroCreationMenu* pHeroCreationMenu,
+	bool _isPlaying
 )
 {
 	int i = 1;
@@ -201,7 +203,7 @@ void MainMenu::DisplayOptions
 			{
 				pCommands->Color(7);
 				system("cls");
-				pMainMenu->StartMenu(pCommands, pArtwork, pMusicThread, pMainMenu, pMusicIsPlaying, pHeroClass, pHeroCreationMenu);
+				pMainMenu->StartMenu(pCommands, pArtwork, pMusicThread, pMainMenu, pMusicIsPlaying, pHeroClass, pHeroCreationMenu, _isPlaying);
 			}
 			break;
 		}
