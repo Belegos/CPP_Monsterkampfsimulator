@@ -125,22 +125,4 @@ int Monster::ModifySpeed(const int& _newSpeed)
 	_monsterSpeed = _newSpeed;
 	return _monsterSpeed;
 }
-//
-//
-//int Monster::GetHealth()
-//{
-//	return _currentHealth;
-//};
-//void Monster::SetHealth(const int& _newHealth)
-//{
-//	_currentHealth = _newHealth;
-//};
-//int Monster::GetMaxHealth() 
-//{
-//	return _monsterHealth;
-//};
-//void Monster::SetMaxHealth(const int& _newHealth)
-//{
-//	_monsterHealth = _newHealth;
-//};
 // end of Property Getters and Setters

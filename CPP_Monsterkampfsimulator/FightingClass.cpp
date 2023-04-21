@@ -10,32 +10,40 @@ void FightingClass::InitFight(Commands* const pCommands, HeroClass* pHeroClass)
 		int _rndNumber = 7; //for testing
 		while (pHeroClass->ModifyHealth() > 0)
 		{
-			std::cout << ">>>>>> Round " << _roundCounter << " has started. <<<<<<" << std::endl;
+			RoundTelling(pCommands, _roundCounter);
 			m_Enemy = SelectEnemy(_rndNumber, m_factory, m_Enemy);
-			StartFight(m_Enemy, pHeroClass);
-			if (pHeroClass->ModifyHealth() <= 0)break;
-			_roundCounter++;
-			_rndNumber++;
-			HeroRests(pHeroClass);
-			if (_rndNumber >= 9) { _rndNumber = 1; }
-			if(_roundCounter >= 30)
-			{
-				std::cout << "There are no more Monsters left." << std::endl;
-				break;
-			}
+			StartFight(pCommands, m_Enemy, pHeroClass);
+			int retflag;
+			CheckHeroLifeAndHeal(pHeroClass, _roundCounter, _rndNumber, pCommands, retflag);
+			if (retflag == 2) break;
 		}
-		if (pHeroClass->ModifyHealth() <= 0||_roundCounter >= 30)break;
+		if (pHeroClass->ModifyHealth() <= 0 || _roundCounter >= 30)break;
 
 	}
 	HeroLost(pCommands, pHeroClass);
 }
 
-void FightingClass::HeroRests(HeroClass* pHeroClass)
+void FightingClass::CheckHeroLifeAndHeal(HeroClass* pHeroClass, int& _roundCounter, int& _rndNumber, Commands* const& pCommands, int& retflag)
 {
-	pHeroClass->ModifyHealth(pHeroClass->ModifyHealth() + 3);
-	std::cout << "The hero rests a little bit. He heals himself for 10 health." << std::endl;
+	retflag = 1;
+	if (pHeroClass->ModifyHealth() <= 0) { retflag = 2; return; };
+	_roundCounter++;
+	_rndNumber++;
+	HeroRests(pCommands, pHeroClass);
+	if (_rndNumber >= 9) { _rndNumber = 1; }
+	if (_roundCounter >= 30)
+	{
+		std::cout << "There are no more Monsters left." << std::endl;
+		{ retflag = 2; return; };
+	}
 }
 
+void FightingClass::RoundTelling(Commands* const& pCommands, int _roundCounter)
+{
+	pCommands->Color(5);
+	std::cout << ">>>>>> Round " << _roundCounter << " has started. <<<<<<" << std::endl;
+	pCommands->Color(7);
+}
 
 
 Monster* FightingClass::SelectEnemy(int _rndNumber, std::shared_ptr<MonsterFactory> pMonsterFactory, Monster* m_Enemy)
@@ -72,11 +80,10 @@ Monster* FightingClass::SelectEnemy(int _rndNumber, std::shared_ptr<MonsterFacto
 		MonsterFactory* pMonsterFactory = new FactoryZombie();
 		m_Enemy = pMonsterFactory->createMonster();
 	}
-
 	return m_Enemy;
 }
 
-void FightingClass::StartFight(Monster* m_Enemy, HeroClass* pHeroClass)
+void FightingClass::StartFight(Commands* const pCommands, Monster* m_Enemy, HeroClass* pHeroClass)
 {
 	int _heroAttack = pHeroClass->ModifyAttack() - m_Enemy->ModifyDefense();
 	int _enemyAttack = m_Enemy->ModifyAttack() - pHeroClass->ModifyDefense();
@@ -87,12 +94,12 @@ void FightingClass::StartFight(Monster* m_Enemy, HeroClass* pHeroClass)
 		if (pHeroClass->ModifySpeed() > m_Enemy->ModifySpeed())
 		{
 			//hero attacks first
-			HeroAttack(pHeroClass, _heroAttack, m_Enemy, _enemyAttack);
+			HeroAttack(pCommands, pHeroClass, _heroAttack, m_Enemy, _enemyAttack);
 			if (m_Enemy->ModifyHealth() <= 0)
 			{
 				break;
 			}
-			EnemyAttack(pHeroClass, _heroAttack, m_Enemy, _enemyAttack);
+			EnemyAttack(pCommands, pHeroClass, _heroAttack, m_Enemy, _enemyAttack);
 			if (pHeroClass->ModifyHealth() <= 0)
 			{
 				break;
@@ -101,12 +108,12 @@ void FightingClass::StartFight(Monster* m_Enemy, HeroClass* pHeroClass)
 		else
 		{
 			//Enemy attacks first
-			EnemyAttack(pHeroClass, _heroAttack, m_Enemy, _enemyAttack);
+			EnemyAttack(pCommands, pHeroClass, _heroAttack, m_Enemy, _enemyAttack);
 			if (pHeroClass->ModifyHealth() <= 0)
 			{
 				break;
 			}
-			HeroAttack(pHeroClass, _heroAttack, m_Enemy, _enemyAttack);
+			HeroAttack(pCommands, pHeroClass, _heroAttack, m_Enemy, _enemyAttack);
 			if (m_Enemy->ModifyHealth() <= 0)
 			{
 				break;
@@ -117,12 +124,13 @@ void FightingClass::StartFight(Monster* m_Enemy, HeroClass* pHeroClass)
 void FightingClass::HeroLost(Commands* const pCommands, HeroClass* pHeroClass)
 {
 	std::cout << "The hero has " << pHeroClass->ModifyHealth() << " health left. Game over." << std::endl;
-	std::cout << "Press any key to continue to main menu."<<std::endl;
+	std::cout << "Press any key to continue to main menu." << std::endl;
 	char _anyKey = _getch();
 }
 
-void FightingClass::HeroAttack(HeroClass* pHeroClass, int _heroAttack, Monster* m_Enemy, int _enemyAttack)
+void FightingClass::HeroAttack(Commands* const pCommands, HeroClass* pHeroClass, int _heroAttack, Monster* m_Enemy, int _enemyAttack)
 {
+	pCommands->Color(1);
 	if (pHeroClass->ModifyAttack() - m_Enemy->ModifyDefense() >= 1)
 	{
 		m_Enemy->ModifyHealth(m_Enemy->ModifyHealth() - _heroAttack);
@@ -136,10 +144,12 @@ void FightingClass::HeroAttack(HeroClass* pHeroClass, int _heroAttack, Monster* 
 		std::cout << "Hero hits Monster for 1 damage." << std::endl;
 		std::cout << "Monster has " << m_Enemy->ModifyHealth() << " health left." << std::endl;
 	}
+	pCommands->Color(7);
 }
 
-void FightingClass::EnemyAttack(HeroClass* pHeroClass, int _heroAttack, Monster* m_Enemy, int _enemyAttack)
+void FightingClass::EnemyAttack(Commands* const pCommands, HeroClass* pHeroClass, int _heroAttack, Monster* m_Enemy, int _enemyAttack)
 {
+	pCommands->Color(12);
 	if (m_Enemy->ModifyAttack() - pHeroClass->ModifyDefense() >= 1)
 	{
 		pHeroClass->ModifyHealth(pHeroClass->ModifyHealth() - _enemyAttack);
@@ -153,4 +163,13 @@ void FightingClass::EnemyAttack(HeroClass* pHeroClass, int _heroAttack, Monster*
 		std::cout << "Monster hits Hero for 1 damage." << std::endl;
 		std::cout << "Hero has " << pHeroClass->ModifyHealth() << " health left." << std::endl;
 	}
+	pCommands->Color(7);
+}
+void FightingClass::HeroRests(Commands* const pCommands, HeroClass* pHeroClass)
+{
+	pCommands->Color(2);
+	int _healValue = (pHeroClass->ModifyHealth() + pHeroClass->ModifyDefense()) / 10 % 2;
+	pHeroClass->ModifyHealth(pHeroClass->ModifyHealth() + _healValue);
+	std::cout << "The hero rests a little bit. He heals himself for " << _healValue << " health." << std::endl;
+	pCommands->Color(7);
 }
